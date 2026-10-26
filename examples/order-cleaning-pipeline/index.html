@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>一行订单怎样走完清洗流水线</title>
+<link rel="stylesheet" href="atlas-kit:1.css">
+</head>
+<body>
+<h1>一行订单怎样走完清洗流水线</h1>
+<p class="ex-lead">这张卡片是套件的示例：它跟着<strong>同一行订单</strong>走完三个阶段。数据是虚构的，所以每张表都标了“示意数据”。</p>
+
+<ex-qa q="订单表里到底存了什么？">
+<p>每行是一笔订单，核心是“买了什么品类”和“给它打的标签”。标签的写法是 <code>品类@标签</code>，来自不同数据源，写法并不统一：</p>
+<ex-table source="illustrative" caption="虚构的三行订单，用来演示 ex-table 的来源徽标。">
+<table>
+<tr><th>order_id</th><th>category</th><th>label</th><th>qty</th></tr>
+<tr><td>A-1001</td><td>(空)</td><td>鞋类@Running Shoes #2</td><td>1</td></tr>
+<tr><td>A-1002</td><td>服饰</td><td>服饰@上衣 左袖</td><td>3</td></tr>
+<tr><td>A-1003</td><td>其它体系</td><td>其它体系@杂项</td><td>2</td></tr>
+</table>
+</ex-table>
+</ex-qa>
+
+<ex-qa q="为什么要先修空品类、再删体系外的行？">
+<p>顺序是有原因的：先补全，才能判断一行到底在不在体系里。下面跟着 <code>A-1001</code> 走一遍，点标题可折叠每一站。</p>
+<ex-flow>
+<ex-stage title="补全空品类" tag="pipeline/clean.py">
+<ex-in><pre>category = (空)
+label    = 鞋类@Running Shoes #2</pre></ex-in>
+<ex-out><pre>category = 鞋类
+label    = 鞋类@Running Shoes #2</pre></ex-out>
+<ex-why>品类为空的行没法判断属于哪个体系，必须先从标签的 <code>@</code> 前半段补出来；否则下一站会把它当成“体系外”误删。</ex-why>
+</ex-stage>
+<ex-stage title="删除体系外的行" tag="pipeline/clean.py">
+<ex-in><p>三行都进来：<code>A-1001</code> 鞋类，<code>A-1002</code> 服饰，<code>A-1003</code> 其它体系。</p></ex-in>
+<ex-out><p>只剩 <code>A-1001</code> 和 <code>A-1002</code>。<code>A-1003</code> 被删除。</p></ex-out>
+<ex-why>训练只覆盖约定的品类体系，体系外的行留着只会变成噪声标签。</ex-why>
+</ex-stage>
+<ex-stage title="标签规范化" tag="pipeline/normalize.py#canon_label">
+<ex-in><p>带方位词、编号、大小写不一的原始标签（见下面的对比）。</p></ex-in>
+<ex-out><p>统一成规范短语，同一个部件只剩一种写法。</p></ex-out>
+<ex-why>同一部件被写成很多近义标签，会互相变成假的反例；规范化把它们并成一个。</ex-why>
+</ex-stage>
+</ex-flow>
+</ex-qa>
+
+<ex-qa q="清洗之后的品类标签长什么样？">
+<p>下面把 <code>A-1001</code> 和 <code>A-1002</code> 的标签处理前后放在一起，变化的部分会自动高亮：</p>
+<ex-compare>
+<ex-before>鞋类@Running Shoes #2
+服饰@上衣 左袖</ex-before>
+<ex-after>鞋类@running shoes
+服饰@上衣 袖</ex-after>
+</ex-compare>
+<p>代码里的对应位置可以直接跳转：<a href="atlas://pipeline/normalize.py#canon_label">pipeline/normalize.py 的 canon_label</a>。</p>
+</ex-qa>
+
+<script src="atlas-kit:1.js"></script>
+</body>
+</html>

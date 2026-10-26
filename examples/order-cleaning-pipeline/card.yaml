@@ -1,0 +1,13 @@
+kit: 1
+id: order-cleaning-pipeline
+title: 一行订单怎样走完清洗流水线
+questions:
+  - 订单表里到底存了什么？
+  - 为什么要先修空品类、再删体系外的行？
+  - 清洗之后的品类标签长什么样？
+summary: 这是套件自带的示例卡片：用一行虚构订单演示各组件，所有数据都是示意数据。
+anchors:
+  - pipeline/clean.py
+  - pipeline/normalize.py#canon_label
+tags: [example]
+language: zh

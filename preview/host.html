@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>atlas-explainer · host preview</title>
+<style>
+  :root { --bg:#eceae4; --panel:#fbfbf9; --fg:#1d2127; --line:#d6d4cc; --muted:#667085; --accent:#2a6f97; }
+  :root[data-theme="dark"] { --bg:#0e1013; --panel:#14171b; --fg:#e4e6ea; --line:#2f353d; --muted:#98a2b3; --accent:#6aa9cf; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.5 system-ui,"Microsoft YaHei",sans-serif; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; height:100vh; }
+  header { display:flex; flex-wrap:wrap; gap:.6rem 1rem; align-items:center; padding:.5rem 1rem; background:var(--panel); border-bottom:1px solid var(--line); }
+  header b { font-size:15px; }
+  select, button, input { font:inherit; color:inherit; background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:.2rem .5rem; }
+  button { cursor:pointer; }
+  main { flex:1; display:grid; grid-template-columns: minmax(0,1fr) 16rem; min-height:0; }
+  .reader { overflow:auto; padding:1rem; }
+  .sheet { width:min(46rem + 3rem, 100%); margin:0 auto; background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  iframe { display:block; width:100%; border:0; min-height:12rem; }
+  aside { border-left:1px solid var(--line); background:var(--panel); padding:.7rem; overflow:auto; font:12px/1.5 ui-monospace,Consolas,monospace; }
+  aside h4 { margin:0 0 .4rem; font:600 12px system-ui; color:var(--muted); }
+  aside div { padding:.15rem 0; border-bottom:1px dashed var(--line); word-break:break-all; }
+</style>
+</head>
+<body>
+<header>
+  <b>Host simulator</b>
+  <label>card <select id="card"></select></label>
+  <label>theme <select id="theme"><option>light</option><option>dark</option></select></label>
+  <label>lang <select id="lang"><option>zh</option><option>en</option></select></label>
+  <label>scale <input id="scale" type="range" min="0.8" max="1.6" step="0.1" value="1"></label>
+  <span style="color:var(--muted)">模拟 Code Atlas 阅读层：sandbox="allow-scripts"（无 allow-same-origin），经 postMessage 同步主题与高度</span>
+</header>
+<main>
+  <div class="reader"><div class="sheet"><iframe id="frame" sandbox="allow-scripts" title="card"></iframe></div></div>
+  <aside><h4>messages from card</h4><div id="log"></div></aside>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const frame = $("frame"), log = $("log");
+  const base = "../dist/cards/";
+  function push() {
+    document.documentElement.dataset.theme = $("theme").value;
+    frame.contentWindow && frame.contentWindow.postMessage(
+      { type: "atlas:theme", theme: $("theme").value, lang: $("lang").value, scale: Number($("scale").value) }, "*");
+  }
+  window.addEventListener("message", e => {
+    if (e.source !== frame.contentWindow) return;
+    const d = e.data || {};
+    if (d.type === "atlas:height") frame.style.height = d.height + "px";
+    if (d.type === "atlas:ready") push();
+    const row = document.createElement("div");
+    row.textContent = JSON.stringify(d);
+    log.prepend(row);
+  });
+  for (const id of ["theme", "lang", "scale"]) $(id).addEventListener("input", push);
+  // srcdoc rather than src: the viewer is a static site, and a fetched page needs no separate route.
+  $("card").addEventListener("change", () =>
+    fetch(base + $("card").value + "/index.html").then(r => r.text()).then(html => { frame.srcdoc = html; }));
+  fetch(base + "index.json").then(r => r.json()).then(cards => {
+    const want = new URLSearchParams(location.search).get("card");
+    for (const c of cards) $("card").add(new Option(c.title + " (" + c.id + ")", c.id));
+    if (want) $("card").value = want;
+    $("card").dispatchEvent(new Event("change"));
+  });
+  const q = new URLSearchParams(location.search);
+  if (q.get("theme")) $("theme").value = q.get("theme");
+  if (q.get("lang")) $("lang").value = q.get("lang");
+</script>
+</body>
+</html>
