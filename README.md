@@ -1,6 +1,6 @@
 # atlas-explainer
 
-Explainer cards for [Code Atlas](../code-atlas): visual answers to "I don't understand this part of the code",
+Explainer cards for [Code Atlas](https://github.com/cowdedroyal/code-atlas): visual answers to "I don't understand this part of the code",
 kept in the repository so the next reader doesn't have to ask again.
 
 A **card** is a small directory under `.codemap/explainers/<id>/`:
@@ -23,7 +23,7 @@ This repository holds the pieces that authors and agents need, independent of th
 
 Receiving cards — resolving anchors against the scanned index, staleness, `build`, the detail-panel list, the reading
 layer — lives in Code Atlas. The two sides only share the manifest schema and the host protocol below.
-Design: [code-atlas/docs/explainer-design.md](../code-atlas/docs/explainer-design.md).
+Design: [code-atlas/docs/explainer-design.md](https://github.com/cowdedroyal/code-atlas/blob/feat/explainer-cards/docs/explainer-design.md).
 
 ## Install the skill
 
