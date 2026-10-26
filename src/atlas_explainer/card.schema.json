@@ -38,6 +38,11 @@
       "items": {"type": "string", "pattern": "^[\\w.-]{1,24}$"}
     },
     "language": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)?$", "description": "Language of the card text (matches .codemap/config.yaml)."},
+    "anchor_hashes": {
+      "type": "object",
+      "additionalProperties": {"type": ["string", "null"]},
+      "description": "Written by `apply`/`confirm`: content hash of each anchor when the card was written or last confirmed. A different hash now means the code changed since."
+    },
     "run": {"type": "string", "description": "Written by `apply`: the run that last wrote the card."},
     "at": {"type": "string", "description": "Written by `apply`: ISO timestamp of that run."}
   }
