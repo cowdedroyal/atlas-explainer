@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "survivors.csv"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "encoding": {
+    "x": {"field": "stage", "type": "nominal", "sort": ["clean", "filter", "normalize"], "axis": {"title": null}},
+    "y": {"field": "rows", "type": "quantitative", "axis": {"title": "rows"}, "stack": "zero"},
+    "color": {
+      "field": "kind", "type": "nominal", "sort": ["kept", "dropped"],
+      "scale": {"domain": ["kept", "dropped"], "range": ["#2a6f97", "#e07a5f"]},
+      "legend": {"title": null, "orient": "top"}
+    },
+    "tooltip": [{"field": "stage"}, {"field": "kind"}, {"field": "rows"}]
+  }
+}

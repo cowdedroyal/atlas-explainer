@@ -1,0 +1,13 @@
+kit: 1
+id: media-showcase
+title: "Media: a pipeline in motion and its data"
+questions:
+  - What actually happens to a row between stages?
+  - How many rows survive each stage?
+  - Which labels dominate, and is that stable across categories?
+summary: The example card for baked media — a frame animation of one row’s journey and two Vega-Lite charts of the same run. Every number here is illustrative.
+anchors:
+  - pipeline/clean.py
+  - pipeline/normalize.py#canon_label
+tags: [example, media]
+language: en

@@ -30,14 +30,20 @@ one-line answer, a pure opinion, or something the code's own docstring already s
 4. **Find the through-line.** If the user asked several questions, they are usually one thing — a piece of data
    travelling through stages. Pick a single running example and make each question a chapter
    ([references/narrative.md](references/narrative.md)).
-5. **Write the card** in a drafts directory *outside* the mapped repository (so drafts do not become map nodes):
+5. **Decide whether a picture carries it.** A stage list explains *what*; an animation explains *in what order*; a
+   chart explains *how much*. Most cards need neither — add `<ex-anim>` or `<ex-chart>` only when the reader's
+   question is about sequence or quantity, and read [references/media.md](references/media.md) first: both are baked,
+   committed, and much heavier than text.
+6. **Write the card** in a drafts directory *outside* the mapped repository (so drafts do not become map nodes):
    `card.yaml` + `index.html`, using only the kit's tags ([references/components.md](references/components.md)).
-6. **Validate, fix, apply.** `codeatlas card validate DIR`; read every error and fix the content — never
-   weaken a source declaration or drop an anchor just to pass. Then `codeatlas card apply DIR`.
-7. **Check it is trackable.** Run `git check-ignore -v .codemap/explainers/<id>/card.yaml`. If the repository's
+7. **Bake the media, then validate, fix, apply.** `atlas-explainer bake DIR` (or `codeatlas card bake DIR`) renders
+   frames and compiles Vega-Lite specs into `media/`, and must be re-run after any source change or lint will call the
+   asset stale. Then `codeatlas card validate DIR`; read every error and fix the content — never weaken a source
+   declaration or drop an anchor just to pass. Then `codeatlas card apply DIR`.
+8. **Check it is trackable.** Run `git check-ignore -v .codemap/explainers/<id>/card.yaml`. If the repository's
    `.gitignore` swallows `.codemap/`, tell the user — the card will not reach the remote until they allow it. Do not edit
    their `.gitignore` unasked.
-8. **Reply** in two or three sentences: the card's title, which nodes it hangs on, how to open it
+9. **Reply** in two or three sentences: the card's title, which nodes it hangs on, how to open it
    (`codeatlas serve -r <repo>`, then click the node → Explanations). Mention anything you could not verify.
 
 ## Hard rules
@@ -63,13 +69,16 @@ one-line answer, a pure opinion, or something the code's own docstring already s
    values exactly as they are.
 8. **Do not change source, the structure index or built JSON** to make an explanation true. If you find a real
    problem in the code, say so in chat and offer to handle it separately.
-9. **Keep it small.** A packed card over 200 KB is rejected; tables show a few rows, not dumps.
+9. **Keep it small.** The page is limited to 200 KB and baked media to 2 MB: tables show a few rows, not dumps;
+   animations are seconds long, not minutes; an interactive chart is only worth its half megabyte when the reader
+   actually needs to filter or inspect the data.
 
 ## Commands
 
 | Command | Use |
 |---|---|
 | `codeatlas card search [QUERY] [--anchor NODE]` | find cards by words or by what they explain |
+| `codeatlas card bake DIR [--only NAME]` | render the card's animation frames and Vega-Lite charts into `media/` |
 | `codeatlas card validate DIR` | lint the page and check every anchor exists (dry run) |
 | `codeatlas card apply DIR` | write it to `.codemap/explainers/<id>/`; same id replaces; identical content changes nothing |
 | `codeatlas card confirm ID` | after reviewing a stale card against the current code |
