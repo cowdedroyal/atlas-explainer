@@ -1,0 +1,41 @@
+# A scene is a diagram the reader clicks through. Every step names what changed; the payload the row carries is
+# visible at each stop, instead of being baked into a picture.
+size: [700, 250]
+
+nodes:
+  - {id: row, kind: chip, text: A-1001, sub: "category=(empty)", at: [24, 100], size: [140, 40], tone: accent}
+  - {id: clean, kind: box, text: clean, sub: "stage 0", at: [196, 88], size: [126, 64]}
+  - {id: index, kind: box, text: index, sub: "stage 1", at: [362, 88], size: [126, 64]}
+  - {id: split, kind: box, text: split, sub: "stage 5", at: [528, 88], size: [126, 64]}
+
+edges:
+  - {from: clean, to: index}
+  - {from: index, to: split}
+
+steps:
+  - title: "A row arrives with an empty category"
+    detail: "Routing needs the category first: an empty value cannot be placed in any taxonomy."
+    show: [row]
+    focus: [row]
+  - title: "clean fills it in from the label"
+    detail: "The part before @ in the label is the category; only now can the row be judged."
+    show: [clean]
+    focus: [clean]
+    move: {row: [200, 100]}
+    sub: {row: "category=shoes"}
+  - title: "index gives the row an id"
+    detail: "Every later stage refers to this id instead of reading the parquet again."
+    show: [index]
+    focus: [index]
+    move: {row: [366, 100]}
+    sub: {row: "row 12"}
+  - title: "split reads the place from a mapping table"
+    detail: "train or val is decided by the table, not by anything in the row."
+    show: [split]
+    focus: [split]
+    move: {row: [532, 100]}
+    sub: {row: "train"}
+  - title: "Four stages, three changes"
+    detail: "The shape is the boxes; the explanation is the three payloads the row picked up."
+    move: {row: [532, 100]}
+    focus: []

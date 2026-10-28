@@ -2,36 +2,29 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Media: a pipeline in motion and its data</title>
+<title>Media: a pipeline you click through</title>
 <link rel="stylesheet" href="atlas-kit:1.css">
 </head>
 <body>
-<h1>Media: a pipeline in motion and its data</h1>
-<p class="ex-lead">This card is the kit's example for baked media. It follows the same row as the other example, but
-shows it <em>moving</em>, and then plots the run it belongs to. All numbers are made up, so every picture carries the
-“illustrative” badge.</p>
+<h1>Media: a pipeline you click through</h1>
+<p class="ex-lead">This card is the kit's example for baked media. One row travels stage 0 → 1 → 5: click the
+picture and it moves, carrying what it holds at that moment. All numbers are made up, so every picture carries
+the “illustrative” badge.</p>
 
 <ex-qa q="What actually happens to a row between stages?">
-<p>A still cannot show the order of events: which box a row enters, where another one disappears. The animation below
-is a baked frame sequence — no script of the card's own, no network — so it plays here and keeps working when the card
-is opened from git on a laptop with no server.</p>
-<ex-anim src="atlas-media:flow" source="illustrative" caption="A-1001 travels through clean → filter → normalize; A-1003 fades out where the filter drops it." autoplay loop></ex-anim>
-<p>Scrub the slider to stop on a stage. The frames were drawn by <code>media/src/flow/gen.py</code>; a real card would
-render a Motion Canvas scene (or a Manim clip) to the same kind of stills.</p>
+<ex-scene src="atlas-media:stages" source="illustrative" caption="A-1001 through clean → index → split; the chip shows what the row carries at each stop."></ex-scene>
+<p>Five clicks, not a video: the picture stops where you stopped, and the line under it says what the click
+changed. Anything the picture carries — a category, a row id, a split — is text you can read, select and search.</p>
 </ex-qa>
 
 <ex-qa q="How many rows survive each stage?">
-<p>The animation follows one row, which hides the scale. The same run, counted at each stage:</p>
 <ex-chart src="atlas-media:survivors" source="illustrative" caption="Rows entering and leaving each stage of one illustrative run."></ex-chart>
-<p>Two thirds of the input is gone after <code>filter</code>, and none of the rest is lost afterwards. That asymmetry
-is the reason the card exists: the expensive part of the pipeline is not the cleaning, it is what the filter throws away.</p>
+<p>Two thirds of the input is gone after <code>filter</code>. That asymmetry is the reason the card exists.</p>
 </ex-qa>
 
 <ex-qa q="Which labels dominate, and is that stable across categories?">
-<p>This chart is <strong>interactive</strong>: hover a bar for the count, and click a legend entry to isolate that
-category. It is a Vega-Lite spec compiled at bake time, drawn by the Vega runtime inlined into the card.</p>
 <ex-chart src="atlas-media:labels" source="illustrative" caption="Label counts by category; hover for values, click a legend entry to isolate." interactive></ex-chart>
-<p>The long tail is exactly what normalization is for: <code>running shoes</code>, <code>Running Shoes</code> and
+<p>The long tail is what normalization is for: <code>running shoes</code>, <code>Running Shoes</code> and
 <code>running shoe</code> are three bars until <a href="atlas://pipeline/normalize.py#canon_label">canon_label</a>
 folds them into one.</p>
 </ex-qa>

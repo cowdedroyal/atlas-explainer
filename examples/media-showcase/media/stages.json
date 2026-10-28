@@ -1,0 +1,199 @@
+{
+ "kind": "scene",
+ "id": "stages",
+ "scene": {
+  "size": [
+   700.0,
+   250.0
+  ],
+  "nodes": [
+   {
+    "id": "row",
+    "kind": "chip",
+    "at": [
+     24.0,
+     100.0
+    ],
+    "size": [
+     140.0,
+     40.0
+    ],
+    "text": "A-1001",
+    "sub": "category=(empty)",
+    "tone": "accent",
+    "value": null
+   },
+   {
+    "id": "clean",
+    "kind": "box",
+    "at": [
+     196.0,
+     88.0
+    ],
+    "size": [
+     126.0,
+     64.0
+    ],
+    "text": "clean",
+    "sub": "stage 0",
+    "tone": "default",
+    "value": null
+   },
+   {
+    "id": "index",
+    "kind": "box",
+    "at": [
+     362.0,
+     88.0
+    ],
+    "size": [
+     126.0,
+     64.0
+    ],
+    "text": "index",
+    "sub": "stage 1",
+    "tone": "default",
+    "value": null
+   },
+   {
+    "id": "split",
+    "kind": "box",
+    "at": [
+     528.0,
+     88.0
+    ],
+    "size": [
+     126.0,
+     64.0
+    ],
+    "text": "split",
+    "sub": "stage 5",
+    "tone": "default",
+    "value": null
+   }
+  ],
+  "edges": [
+   {
+    "from": "clean",
+    "to": "index",
+    "label": null,
+    "dashed": false
+   },
+   {
+    "from": "index",
+    "to": "split",
+    "label": null,
+    "dashed": false
+   }
+  ],
+  "steps": [
+   {
+    "title": "A row arrives with an empty category",
+    "detail": "Routing needs the category first: an empty value cannot be placed in any taxonomy.",
+    "show": [
+     "row"
+    ],
+    "hide": [],
+    "focus": [
+     "row"
+    ],
+    "move": {},
+    "text": {},
+    "sub": {},
+    "value": {},
+    "tone": {}
+   },
+   {
+    "title": "clean fills it in from the label",
+    "detail": "The part before @ in the label is the category; only now can the row be judged.",
+    "show": [
+     "clean"
+    ],
+    "hide": [],
+    "focus": [
+     "clean"
+    ],
+    "move": {
+     "row": [
+      200,
+      100
+     ]
+    },
+    "text": {},
+    "sub": {
+     "row": "category=shoes"
+    },
+    "value": {},
+    "tone": {}
+   },
+   {
+    "title": "index gives the row an id",
+    "detail": "Every later stage refers to this id instead of reading the parquet again.",
+    "show": [
+     "index"
+    ],
+    "hide": [],
+    "focus": [
+     "index"
+    ],
+    "move": {
+     "row": [
+      366,
+      100
+     ]
+    },
+    "text": {},
+    "sub": {
+     "row": "row 12"
+    },
+    "value": {},
+    "tone": {}
+   },
+   {
+    "title": "split reads the place from a mapping table",
+    "detail": "train or val is decided by the table, not by anything in the row.",
+    "show": [
+     "split"
+    ],
+    "hide": [],
+    "focus": [
+     "split"
+    ],
+    "move": {
+     "row": [
+      532,
+      100
+     ]
+    },
+    "text": {},
+    "sub": {
+     "row": "train"
+    },
+    "value": {},
+    "tone": {}
+   },
+   {
+    "title": "Four stages, three changes",
+    "detail": "The shape is the boxes; the explanation is the three payloads the row picked up.",
+    "show": [],
+    "hide": [],
+    "focus": [],
+    "move": {
+     "row": [
+      532,
+      100
+     ]
+    },
+    "text": {},
+    "sub": {},
+    "value": {},
+    "tone": {}
+   }
+  ]
+ },
+ "baked_at": "2026-10-28T02:18:03+00:00",
+ "sources": {
+  "media/scenes/stages.yaml": "d318f2ee23a718d1",
+  "media/bake.yaml": "a1f90f702c19eef7"
+ }
+}
