@@ -73,14 +73,16 @@ steps:
 | `nodes[].size` | optional; defaults per kind (`box` 128×56, `chip` 56×32, `dot` 14×14, `bar` 180×16) |
 | `nodes[].text` / `.sub` | main line (≤160) and small line (≤120) |
 | `nodes[].tone` | `default`, `accent`, `own`, `ok`, `warn`, `del`, `muted` |
+| `nodes[].dashed` | dashed outline (a grid cell, a boundary) |
 | `nodes[].value` | `bar` only: fill ratio 0–1 |
-| `edges[].from` / `.to` | node ids; the arrow follows them when they move |
+| `edges[].from` / `.to` | a node id, or a `[x, y]` point for a leader line or a bracket; the arrow follows nodes when they move |
 | `edges[].label`, `.dashed` | optional |
 | `steps[].title` | **required**: what this click explains (≤120) |
 | `steps[].detail` | optional second line (≤400) |
 | `steps[].show` / `.hide` | nodes that appear / disappear at this step |
 | `steps[].focus` | spotlight: everything else dims; `[]` clears it |
 | `steps[].move` | `{node: [x, y]}` — position change, animated |
+| `steps[].size` | `{node: [w, h]}` — a box grows or shrinks (a cell doubling, a bar filling) |
 | `steps[].text` / `.sub` | `{node: "…"}` — live text change (the payload) |
 | `steps[].value` | `{bar: 0–1}` |
 | `steps[].tone` | `{node: tone}` — recolour on click |
@@ -94,6 +96,10 @@ Rules the bake enforces, because they are what makes a scene explain rather than
    until that step.
 4. **Put the payload in the picture**, not in the paragraph: the category the row picks up, the id it gets, the
    branch it takes. Text changes per step are the point.
+5. **Show the operation, not its name.** "同一 2× 格子取 max，宽度翻倍" is a sentence the reader has to simulate. A
+   scene draws the cell, doubles it, puts the four values inside, and leaves one value standing — then shows the
+   *separate* reason the width doubles (an encoder emitting more channels). If a step could be replaced by reading the
+   caption alone, the picture is decoration.
 
 Bake it like any other media:
 

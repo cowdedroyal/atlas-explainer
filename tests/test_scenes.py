@@ -155,6 +155,31 @@ def test_a_tampered_manifest_is_rejected(tmp_path):
     assert any("needs a title" in p for p in lint_card(d))
 
 
+def test_scene_grows_a_cell_and_moves_a_chip():
+    scene = normalize_scene({
+        "nodes": [{"id": "cell", "kind": "box", "at": [10, 10], "size": [40, 40], "dashed": True},
+                  {"id": "chip", "kind": "chip", "at": [0, 0]}],
+        "edges": [{"from": "chip", "to": [200, 40]}],
+        "steps": [{"title": "one", "detail": "start"},
+                  {"title": "two", "size": {"cell": [80, 80]}, "move": {"chip": [30, 30]}}],
+    })
+    assert validate_scene(scene) == []
+    assert scene["nodes"][0]["dashed"] is True
+    assert scene["edges"][0]["to"] == [200, 40]
+
+
+def test_scene_rejects_a_bad_size_or_point():
+    scene = normalize_scene({
+        "nodes": [{"id": "cell", "kind": "box", "at": [10, 10]}],
+        "edges": [{"from": "cell", "to": "nowhere"}],
+        "steps": [{"title": "one", "detail": "start"},
+                  {"title": "two", "size": {"cell": [0, 40]}}],
+    })
+    errors = validate_scene(scene)
+    assert any("size[cell] must be positive" in e for e in errors)
+    assert any("must name a node id or be a point" in e for e in errors)
+
+
 def test_validate_scene_accepts_defaults():
     scene = normalize_scene({"nodes": [{"id": "a", "text": "x"}],
                              "steps": [{"title": "one", "detail": "why"}, {"title": "two", "show": ["a"]}]})
