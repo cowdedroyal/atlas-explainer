@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "labels.csv"},
+  "params": [
+    {"name": "pick", "select": {"type": "point", "fields": ["category"]}, "bind": "legend"}
+  ],
+  "mark": {"type": "bar", "cornerRadiusTopRight": 3, "cornerRadiusBottomRight": 3},
+  "encoding": {
+    "y": {"field": "label", "type": "nominal", "sort": "-x", "axis": {"title": null, "labelLimit": 160}},
+    "x": {"field": "count", "type": "quantitative", "axis": {"title": "rows"}},
+    "color": {
+      "field": "category", "type": "nominal",
+      "legend": {"title": null, "orient": "top"}
+    },
+    "opacity": {
+      "condition": {"param": "pick", "value": 1},
+      "value": 0.35
+    },
+    "tooltip": [{"field": "label"}, {"field": "category"}, {"field": "count"}]
+  }
+}

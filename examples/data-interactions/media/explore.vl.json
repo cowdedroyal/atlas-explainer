@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"values": [{"x":1,"n":2},{"x":2,"n":4},{"x":3,"n":6},{"x":4,"n":8},{"x":5,"n":10}]},
+  "params": [
+    {"name":"cutoff", "value":0, "bind":{"input":"range","min":0,"max":10,"step":1}},
+    {"name":"zoom", "select":"interval", "bind":"scales"}
+  ],
+  "transform": [{"filter":"datum.n >= cutoff"}],
+  "mark": {"type":"point","filled":true,"size":100},
+  "encoding": {
+    "x":{"field":"x","type":"quantitative"},
+    "y":{"field":"n","type":"quantitative"},
+    "tooltip":[{"field":"x"},{"field":"n"}]
+  }
+}

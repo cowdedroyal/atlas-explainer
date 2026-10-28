@@ -1,0 +1,9 @@
+kit: 1
+id: data-interactions
+title: Filter and zoom real Vega-Lite parameters
+summary: A slider filters illustrative points while wheel zoom and drag pan change the visible domain.
+questions:
+  - Can readers filter, zoom and pan data without a network connection?
+anchors: [demo.py]
+language: en
+tags: [charts, interaction]

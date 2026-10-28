@@ -1,0 +1,7 @@
+stage,kind,rows
+clean,kept,1200
+clean,dropped,0
+filter,kept,400
+filter,dropped,800
+normalize,kept,400
+normalize,dropped,0

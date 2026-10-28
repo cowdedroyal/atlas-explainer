@@ -11,6 +11,14 @@ dependencies = [
     "pyyaml>=6.0.3",
 ]
 
+[project.optional-dependencies]
+# `atlas-explainer bake`: frame sheets for animations, Vega-Lite → SVG/Vega for charts. Not needed to lint or pack.
+media = [
+    "pillow>=10",
+    "vl-convert-python>=1.7",
+    "imageio[ffmpeg]>=2.34",     # only for anim.<name>.video: Manim and friends write a video, not stills
+]
+
 [project.scripts]
 atlas-explainer = "atlas_explainer.cli:main"
 
@@ -21,5 +29,13 @@ build-backend = "uv_build"
 [tool.uv.build-backend]
 module-name = "atlas_explainer"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "pytest>=8",
+    "pillow>=10",
+    "vl-convert-python>=1.7",
+    "imageio[ffmpeg]>=2.34",
+]

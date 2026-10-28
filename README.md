@@ -15,8 +15,10 @@ This repository holds the pieces that authors and agents need, independent of th
 | Path | What |
 |---|---|
 | `src/atlas_explainer/card.schema.json` | JSON Schema of `card.yaml` (kit 1) |
-| `src/atlas_explainer/kit/v1.css`, `v1.js` | the component kit: `ex-qa`, `ex-table`, `ex-flow`/`ex-stage`, `ex-compare` |
-| `src/atlas_explainer/pack.py`, `cli.py` | `lint` (is the card safe and well-formed) and `pack` (inline the kit, add a CSP) |
+| `src/atlas_explainer/kit/v1.css`, `v1.js` | the component kit: `ex-qa`, `ex-table`, `ex-flow`/`ex-stage`, `ex-compare`, `ex-anim`, `ex-chart` |
+| `src/atlas_explainer/pack.py`, `cli.py` | `lint` (is the card safe and well-formed), `bake` (frames and charts), `pack` (inline the kit and media, add a CSP) |
+| `src/atlas_explainer/media.py` | turning authored animation sources and Vega-Lite specs into what a card can carry |
+| `src/atlas_explainer/media/vendor/` | the Vega runtime that interactive charts are inlined with (BSD-3, see its README) |
 | `skill/explain/` | the agent skill: when a card is worth making, how to get real samples, how to write one, which commands to run |
 | `preview/host.html` | a stand-in for Code Atlas's reading layer: sandboxed iframe, theme/language/size messages |
 | `examples/` | cards that pass lint and demonstrate every component |
@@ -40,7 +42,9 @@ Then ask the agent a question about the code and say "make an explainer card for
 ## Try it
 
 ```bash
-uv sync
+uv sync                                    # lint/pack only
+uv sync --extra media                      # + bake: pillow, vl-convert, imageio-ffmpeg
+uv run atlas-explainer bake examples       # only needed after editing media sources
 uv run atlas-explainer lint examples
 uv run atlas-explainer pack examples -o dist/cards
 uv run python -m http.server 8790          # then open http://localhost:8790/preview/host.html
@@ -63,12 +67,59 @@ The page links the kit through two fixed placeholders and contains no other scri
 | `<ex-table source="real" origin="…" at="…"><table>…</table></ex-table>` | a data sample. `source` is **required**: `real` (also needs `origin`: the file, command or log it was read from) or `illustrative` (shown with a warning badge) |
 | `<ex-flow><ex-stage title tag><ex-in>…</ex-in><ex-out>…</ex-out><ex-why>…</ex-why></ex-stage>…</ex-flow>` | the same data travelling through stages: input, output and the reason, collapsible, numbered |
 | `<ex-compare><ex-before>…</ex-before><ex-after>…</ex-after></ex-compare>` | before/after text; the words that changed are highlighted on both sides |
+| `<ex-anim src="atlas-media:name" source="…" caption="…" autoplay loop>` | a baked animation: play/pause, scrubbing, per-frame captions, no autoplay under `prefers-reduced-motion` |
+| `<ex-chart src="atlas-media:name" source="…" caption="…" interactive>` | a baked Vega-Lite chart; `interactive` keeps tooltips, selections and legend toggles |
 | `<a href="atlas://path/to/file.py#symbol">` | asks the host to open that node on the map |
 
 Everything else is ordinary HTML (headings, paragraphs, lists, `code`, `pre`, plain tables, inline `style`, `data:image/…`).
 Lint rejects: other scripts or event handlers, network APIs, `iframe`/`object`/`form`/`base`, any URL that leaves the card
-(`http(s):`, protocol-relative, `file:`, `javascript:`), CSS `@import`/external `url()`, tables without a declared source, and
-packed cards over 200 KB.
+(`http(s):`, protocol-relative, `file:`, `javascript:`), CSS `@import`/external `url()`, tables without a declared source,
+`atlas-media:` names that were never baked or that changed since the bake, and packed cards over 200 KB.
+
+## Animations and charts
+
+Text and tables cannot show *in what order* something happens, or *how much* against what. Those two get baked media,
+because the tools that draw them ([Motion Canvas](https://github.com/motion-canvas/motion-canvas), MIT;
+[Manim](https://github.com/ManimCommunity/manim), MIT; [Vega-Lite](https://github.com/vega/vega-lite), BSD) are far too
+heavy to run in a reader that has no network and no scripts of its own:
+
+```
+card/
+  card.yaml            unchanged
+  index.html           <ex-anim src="atlas-media:flow">, <ex-chart src="atlas-media:throughput">
+  media/
+    bake.yaml          how to render: command, frames glob, fps, captions, interactive
+    src/flow/…         the Motion Canvas project, Manim scene, or exported stills
+    flow.webp          baked sprite sheet (commit)
+    flow.json          baked manifest: frame grid, timing, captions, source hashes (commit)
+    throughput.vl.json authored Vega-Lite spec
+    throughput.csv     the data it reads; inlined at bake time
+    throughput.json    baked manifest: SVG per theme, compiled Vega spec, source hashes (commit)
+```
+
+```bash
+uv run atlas-explainer bake path/to/card            # run the declared render, decode video, compile charts
+uv run atlas-explainer bake path/to/card --only flow
+uv run atlas-explainer lint path/to/card            # also: is the baked media current?
+```
+
+Two details make this safe: the sheet becomes a `data:` URI inside the page (images and canvas only, no `video`), and
+interactive charts run Vega through `vega-interpreter` rather than `new Function`, so the card's CSP keeps
+`script-src 'unsafe-inline'` without `'unsafe-eval'`. The runtime is vendored once in
+`src/atlas_explainer/media/vendor/` and inlined only into cards that ask for it.
+
+Sizes: a 12-frame sheet at 560 px is 20–120 KB, a static chart 25–60 KB, an interactive chart about 550 KB. The page
+budget stays 200 KB; baked media has its own 2 MB budget. Recipes for Motion Canvas, Manim and Vega-Lite are in
+[skill/explain/references/media.md](skill/explain/references/media.md).
+
+[`examples/renderer-imports`](examples/renderer-imports) contains real Motion Canvas PNG exports and a Manim MP4,
+with their scene source. Video sampling preserves source duration; the sheet grid bounds both dimensions and
+decoded memory. Media validation rejects missing images, escaping paths, active SVG and external resource URLs.
+Static SVG is displayed as an inert image, and standalone interactive pages retain the runtime's BSD notices.
+
+For the browser regression check, pack the examples and run
+`node scripts/check_media_browser.cjs <packed-dir>` with Playwright installed. `PLAYWRIGHT_MODULE` can point at an
+existing Playwright module and `CHROMIUM_EXECUTABLE_PATH` at an existing Chromium executable.
 
 ## Host protocol
 

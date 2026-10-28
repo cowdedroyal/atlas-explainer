@@ -1,0 +1,23 @@
+# How to turn the sources in this folder into what the card displays. `atlas-explainer bake` reads this file;
+# a card with no media/ needs none of it.
+
+anim:
+  flow:
+    # the stills are committed, so no renderer is installed here: this is the "frames are already on disk" case
+    frames: "media/src/flow/frames/*.png"
+    fps: 8
+    width: 400
+    captions:
+      - "clean: the empty category is filled in from the label"
+      - "clean: A-1001 and A-1003 both leave with a category"
+      - "filter: the rows outside the taxonomy are dropped"
+      - "filter: A-1003 is gone, A-1001 continues"
+      - "normalize: running shoes, Running Shoes and running shoe are one label"
+      - "out: one row, one canonical label"
+
+chart:
+  survivors:
+    spec: survivors.vl.json
+  labels:
+    spec: labels.vl.json
+    interactive: true          # ships the Vega runtime with the card (~500 KB); use it only when interaction earns it

@@ -1,0 +1,889 @@
+{
+ "kind": "chart",
+ "id": "explore",
+ "svg": {
+  "light": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" class=\"marks\" width=\"665\" height=\"329\" viewBox=\"0 0 665 329\"><g fill=\"none\" stroke-miterlimit=\"10\" transform=\"translate(39,11)\"><g class=\"mark-group role-frame root\" role=\"graphics-object\" aria-roledescription=\"group mark container\"><g transform=\"translate(0,0)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h620v280h-620Z\"/><g><g class=\"mark-group role-axis\" aria-hidden=\"true\"><g transform=\"translate(0.5,280.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-grid\" pointer-events=\"none\"><line transform=\"translate(0,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(25,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(50,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(74,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(99,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(124,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(149,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(174,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(198,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(223,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(248,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(273,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(298,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(322,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(347,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(372,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(397,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(422,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(446,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(471,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(496,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(521,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(546,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(570,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(595,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(620,-280)\" x2=\"0\" y2=\"280\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" aria-hidden=\"true\"><g transform=\"translate(0.5,0.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-grid\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,224)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,168)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,112)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,56)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,0)\" x2=\"620\" y2=\"0\" stroke=\"#e8e8e3\" stroke-width=\"1\" opacity=\"1\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" role=\"graphics-symbol\" aria-roledescription=\"axis\" aria-label=\"X-axis titled 'x' for a linear scale with values from 0 to 5\"><g transform=\"translate(0.5,280.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-tick\" pointer-events=\"none\"><line transform=\"translate(0,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(25,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(50,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(74,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(99,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(124,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(149,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(174,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(198,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(223,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(248,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(273,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(298,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(322,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(347,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(372,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(397,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(422,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(446,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(471,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(496,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(521,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(546,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(570,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(595,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(620,0)\" x2=\"0\" y2=\"5\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-label\" pointer-events=\"none\"><text text-anchor=\"start\" transform=\"translate(0,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0.0</text><text text-anchor=\"middle\" transform=\"translate(24.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0.2</text><text text-anchor=\"middle\" transform=\"translate(49.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0.4</text><text text-anchor=\"middle\" transform=\"translate(74.39999999999999,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0.6</text><text text-anchor=\"middle\" transform=\"translate(99.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0.8</text><text text-anchor=\"middle\" transform=\"translate(124,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">1.0</text><text text-anchor=\"middle\" transform=\"translate(148.79999999999998,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">1.2</text><text text-anchor=\"middle\" transform=\"translate(173.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">1.4</text><text text-anchor=\"middle\" transform=\"translate(198.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">1.6</text><text text-anchor=\"middle\" transform=\"translate(223.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">1.8</text><text text-anchor=\"middle\" transform=\"translate(248,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2.0</text><text text-anchor=\"middle\" transform=\"translate(272.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2.2</text><text text-anchor=\"middle\" transform=\"translate(297.59999999999997,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2.4</text><text text-anchor=\"middle\" transform=\"translate(322.40000000000003,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2.6</text><text text-anchor=\"middle\" transform=\"translate(347.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2.8</text><text text-anchor=\"middle\" transform=\"translate(372,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">3.0</text><text text-anchor=\"middle\" transform=\"translate(396.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">3.2</text><text text-anchor=\"middle\" transform=\"translate(421.59999999999997,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">3.4</text><text text-anchor=\"middle\" transform=\"translate(446.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">3.6</text><text text-anchor=\"middle\" transform=\"translate(471.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">3.8</text><text text-anchor=\"middle\" transform=\"translate(496,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4.0</text><text text-anchor=\"middle\" transform=\"translate(520.8000000000001,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4.2</text><text text-anchor=\"middle\" transform=\"translate(545.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4.4</text><text text-anchor=\"middle\" transform=\"translate(570.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4.6</text><text text-anchor=\"middle\" transform=\"translate(595.1999999999999,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4.8</text><text text-anchor=\"end\" transform=\"translate(620,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">5.0</text></g><g class=\"mark-rule role-axis-domain\" pointer-events=\"none\"><line transform=\"translate(0,0)\" x2=\"620\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-title\" pointer-events=\"none\"><text text-anchor=\"middle\" transform=\"translate(310,31)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" font-weight=\"500\" fill=\"#667085\" opacity=\"1\">x</text></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" role=\"graphics-symbol\" aria-roledescription=\"axis\" aria-label=\"Y-axis titled 'n' for a linear scale with values from 0 to 10\"><g transform=\"translate(0.5,0.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-tick\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,224)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,168)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,112)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,56)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,0)\" x2=\"-5\" y2=\"0\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-label\" pointer-events=\"none\"><text text-anchor=\"end\" transform=\"translate(-7,283)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">0</text><text text-anchor=\"end\" transform=\"translate(-7,227)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">2</text><text text-anchor=\"end\" transform=\"translate(-7,171)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">4</text><text text-anchor=\"end\" transform=\"translate(-7,115)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">6</text><text text-anchor=\"end\" transform=\"translate(-7,58.999999999999986)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">8</text><text text-anchor=\"end\" transform=\"translate(-7,3)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#667085\" opacity=\"1\">10</text></g><g class=\"mark-rule role-axis-domain\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"0\" y2=\"-280\" stroke=\"#dcdcd4\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-title\" pointer-events=\"none\"><text text-anchor=\"middle\" transform=\"translate(-22.859375,140) rotate(-90) translate(0,-2)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" font-weight=\"500\" fill=\"#667085\" opacity=\"1\">n</text></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-symbol role-mark marks\" clip-path=\"url(#clip1)\" role=\"graphics-object\" aria-roledescription=\"symbol mark container\"><path aria-label=\"x: 1; n: 2\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(124,224)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 2; n: 4\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(248,168)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 3; n: 6\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(372,112)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 4; n: 8\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(496,55.999999999999986)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 5; n: 10\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(620,0)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" display=\"none\"/></g></g></g><defs><clipPath id=\"clip1\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"280\"/></clipPath></defs></svg>",
+  "dark": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" class=\"marks\" width=\"665\" height=\"329\" viewBox=\"0 0 665 329\"><g fill=\"none\" stroke-miterlimit=\"10\" transform=\"translate(39,11)\"><g class=\"mark-group role-frame root\" role=\"graphics-object\" aria-roledescription=\"group mark container\"><g transform=\"translate(0,0)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h620v280h-620Z\"/><g><g class=\"mark-group role-axis\" aria-hidden=\"true\"><g transform=\"translate(0.5,280.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-grid\" pointer-events=\"none\"><line transform=\"translate(0,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(25,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(50,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(74,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(99,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(124,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(149,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(174,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(198,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(223,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(248,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(273,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(298,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(322,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(347,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(372,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(397,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(422,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(446,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(471,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(496,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(521,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(546,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(570,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(595,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(620,-280)\" x2=\"0\" y2=\"280\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" aria-hidden=\"true\"><g transform=\"translate(0.5,0.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-grid\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,224)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,168)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,112)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,56)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,0)\" x2=\"620\" y2=\"0\" stroke=\"#272c33\" stroke-width=\"1\" opacity=\"1\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" role=\"graphics-symbol\" aria-roledescription=\"axis\" aria-label=\"X-axis titled 'x' for a linear scale with values from 0 to 5\"><g transform=\"translate(0.5,280.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-tick\" pointer-events=\"none\"><line transform=\"translate(0,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(25,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(50,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(74,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(99,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(124,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(149,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(174,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(198,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(223,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(248,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(273,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(298,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(322,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(347,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(372,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(397,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(422,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(446,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(471,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(496,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(521,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(546,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(570,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(595,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(620,0)\" x2=\"0\" y2=\"5\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-label\" pointer-events=\"none\"><text text-anchor=\"start\" transform=\"translate(0,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0.0</text><text text-anchor=\"middle\" transform=\"translate(24.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0.2</text><text text-anchor=\"middle\" transform=\"translate(49.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0.4</text><text text-anchor=\"middle\" transform=\"translate(74.39999999999999,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0.6</text><text text-anchor=\"middle\" transform=\"translate(99.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0.8</text><text text-anchor=\"middle\" transform=\"translate(124,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">1.0</text><text text-anchor=\"middle\" transform=\"translate(148.79999999999998,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">1.2</text><text text-anchor=\"middle\" transform=\"translate(173.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">1.4</text><text text-anchor=\"middle\" transform=\"translate(198.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">1.6</text><text text-anchor=\"middle\" transform=\"translate(223.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">1.8</text><text text-anchor=\"middle\" transform=\"translate(248,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2.0</text><text text-anchor=\"middle\" transform=\"translate(272.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2.2</text><text text-anchor=\"middle\" transform=\"translate(297.59999999999997,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2.4</text><text text-anchor=\"middle\" transform=\"translate(322.40000000000003,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2.6</text><text text-anchor=\"middle\" transform=\"translate(347.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2.8</text><text text-anchor=\"middle\" transform=\"translate(372,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">3.0</text><text text-anchor=\"middle\" transform=\"translate(396.8,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">3.2</text><text text-anchor=\"middle\" transform=\"translate(421.59999999999997,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">3.4</text><text text-anchor=\"middle\" transform=\"translate(446.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">3.6</text><text text-anchor=\"middle\" transform=\"translate(471.2,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">3.8</text><text text-anchor=\"middle\" transform=\"translate(496,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4.0</text><text text-anchor=\"middle\" transform=\"translate(520.8000000000001,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4.2</text><text text-anchor=\"middle\" transform=\"translate(545.6,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4.4</text><text text-anchor=\"middle\" transform=\"translate(570.4,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4.6</text><text text-anchor=\"middle\" transform=\"translate(595.1999999999999,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4.8</text><text text-anchor=\"end\" transform=\"translate(620,16)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">5.0</text></g><g class=\"mark-rule role-axis-domain\" pointer-events=\"none\"><line transform=\"translate(0,0)\" x2=\"620\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-title\" pointer-events=\"none\"><text text-anchor=\"middle\" transform=\"translate(310,31)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" font-weight=\"500\" fill=\"#98a2b3\" opacity=\"1\">x</text></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-group role-axis\" role=\"graphics-symbol\" aria-roledescription=\"axis\" aria-label=\"Y-axis titled 'n' for a linear scale with values from 0 to 10\"><g transform=\"translate(0.5,0.5)\"><path class=\"background\" aria-hidden=\"true\" d=\"M0,0h0v0h0Z\" pointer-events=\"none\"/><g><g class=\"mark-rule role-axis-tick\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,224)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,168)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,112)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,56)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/><line transform=\"translate(0,0)\" x2=\"-5\" y2=\"0\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-label\" pointer-events=\"none\"><text text-anchor=\"end\" transform=\"translate(-7,283)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">0</text><text text-anchor=\"end\" transform=\"translate(-7,227)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">2</text><text text-anchor=\"end\" transform=\"translate(-7,171)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">4</text><text text-anchor=\"end\" transform=\"translate(-7,115)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">6</text><text text-anchor=\"end\" transform=\"translate(-7,58.999999999999986)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">8</text><text text-anchor=\"end\" transform=\"translate(-7,3)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" fill=\"#98a2b3\" opacity=\"1\">10</text></g><g class=\"mark-rule role-axis-domain\" pointer-events=\"none\"><line transform=\"translate(0,280)\" x2=\"0\" y2=\"-280\" stroke=\"#2f353d\" stroke-width=\"1\" opacity=\"1\"/></g><g class=\"mark-text role-axis-title\" pointer-events=\"none\"><text text-anchor=\"middle\" transform=\"translate(-22.859375,140) rotate(-90) translate(0,-2)\" font-family=\"system-ui, -apple-system, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif\" font-size=\"11px\" font-weight=\"500\" fill=\"#98a2b3\" opacity=\"1\">n</text></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" pointer-events=\"none\" display=\"none\"/></g></g><g class=\"mark-symbol role-mark marks\" clip-path=\"url(#clip2)\" role=\"graphics-object\" aria-roledescription=\"symbol mark container\"><path aria-label=\"x: 1; n: 2\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(124,224)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 2; n: 4\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(248,168)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 3; n: 6\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(372,112)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 4; n: 8\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(496,55.999999999999986)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/><path aria-label=\"x: 5; n: 10\" role=\"graphics-symbol\" aria-roledescription=\"point\" transform=\"translate(620,0)\" d=\"M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0\" fill=\"#4c78a8\" stroke-width=\"2\" opacity=\"0.7\"/></g></g><path class=\"foreground\" aria-hidden=\"true\" d=\"\" display=\"none\"/></g></g></g><defs><clipPath id=\"clip2\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"280\"/></clipPath></defs></svg>"
+ },
+ "vega": {
+  "light": {
+   "$schema": "https://vega.github.io/schema/vega/v6.json",
+   "background": "transparent",
+   "padding": 5,
+   "width": 620,
+   "height": 280,
+   "style": "cell",
+   "data": [
+    {
+     "name": "zoom_store"
+    },
+    {
+     "name": "source_0",
+     "values": [
+      {
+       "x": 1,
+       "n": 2
+      },
+      {
+       "x": 2,
+       "n": 4
+      },
+      {
+       "x": 3,
+       "n": 6
+      },
+      {
+       "x": 4,
+       "n": 8
+      },
+      {
+       "x": 5,
+       "n": 10
+      }
+     ]
+    },
+    {
+     "name": "data_0",
+     "source": "source_0",
+     "transform": [
+      {
+       "type": "filter",
+       "expr": "datum.n >= cutoff"
+      },
+      {
+       "type": "filter",
+       "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"n\"]) && isFinite(+datum[\"n\"])"
+      }
+     ]
+    }
+   ],
+   "signals": [
+    {
+     "name": "unit",
+     "value": {},
+     "on": [
+      {
+       "events": "pointermove",
+       "update": "isTuple(group()) ? group() : unit"
+      }
+     ]
+    },
+    {
+     "name": "zoom",
+     "update": "vlSelectionResolve(\"zoom_store\", \"union\")"
+    },
+    {
+     "name": "cutoff",
+     "value": 0,
+     "bind": {
+      "input": "range",
+      "min": 0,
+      "max": 10,
+      "step": 1
+     }
+    },
+    {
+     "name": "zoom_x",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "view",
+         "type": "dblclick"
+        }
+       ],
+       "update": "null"
+      },
+      {
+       "events": {
+        "signal": "zoom_translate_delta"
+       },
+       "update": "panLinear(zoom_translate_anchor.extent_x, -zoom_translate_delta.x / width)"
+      },
+      {
+       "events": {
+        "signal": "zoom_zoom_delta"
+       },
+       "update": "zoomLinear(domain(\"x\"), zoom_zoom_anchor.x, zoom_zoom_delta)"
+      }
+     ]
+    },
+    {
+     "name": "zoom_n",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "view",
+         "type": "dblclick"
+        }
+       ],
+       "update": "null"
+      },
+      {
+       "events": {
+        "signal": "zoom_translate_delta"
+       },
+       "update": "panLinear(zoom_translate_anchor.extent_y, zoom_translate_delta.y / height)"
+      },
+      {
+       "events": {
+        "signal": "zoom_zoom_delta"
+       },
+       "update": "zoomLinear(domain(\"y\"), zoom_zoom_anchor.y, zoom_zoom_delta)"
+      }
+     ]
+    },
+    {
+     "name": "zoom_tuple",
+     "on": [
+      {
+       "events": [
+        {
+         "signal": "zoom_x || zoom_n"
+        }
+       ],
+       "update": "zoom_x && zoom_n ? {unit: \"\", fields: zoom_tuple_fields, values: [zoom_x,zoom_n]} : null"
+      }
+     ]
+    },
+    {
+     "name": "zoom_tuple_fields",
+     "value": [
+      {
+       "field": "x",
+       "channel": "x",
+       "type": "R"
+      },
+      {
+       "field": "n",
+       "channel": "y",
+       "type": "R"
+      }
+     ]
+    },
+    {
+     "name": "zoom_translate_anchor",
+     "value": {},
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "pointerdown"
+        }
+       ],
+       "update": "{x: x(unit), y: y(unit), extent_x: domain(\"x\"), extent_y: domain(\"y\")}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_translate_delta",
+     "value": {},
+     "on": [
+      {
+       "events": [
+        {
+         "source": "window",
+         "type": "pointermove",
+         "consume": true,
+         "between": [
+          {
+           "source": "scope",
+           "type": "pointerdown"
+          },
+          {
+           "source": "window",
+           "type": "pointerup"
+          }
+         ]
+        }
+       ],
+       "update": "{x: zoom_translate_anchor.x - x(unit), y: zoom_translate_anchor.y - y(unit)}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_zoom_anchor",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "wheel",
+         "consume": true
+        }
+       ],
+       "update": "{x: invert(\"x\", x(unit)), y: invert(\"y\", y(unit))}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_zoom_delta",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "wheel",
+         "consume": true
+        }
+       ],
+       "force": true,
+       "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+      }
+     ]
+    },
+    {
+     "name": "zoom_modify",
+     "on": [
+      {
+       "events": {
+        "signal": "zoom_tuple"
+       },
+       "update": "modify(\"zoom_store\", zoom_tuple, true)"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "name": "marks",
+     "type": "symbol",
+     "clip": true,
+     "style": [
+      "point"
+     ],
+     "interactive": true,
+     "from": {
+      "data": "data_0"
+     },
+     "encode": {
+      "update": {
+       "opacity": {
+        "value": 0.7
+       },
+       "size": {
+        "value": 100
+       },
+       "fill": {
+        "value": "#4c78a8"
+       },
+       "tooltip": {
+        "signal": "{\"x\": isValid(datum[\"x\"]) ? isArray(datum[\"x\"]) ? join(datum[\"x\"], '\\n') : datum[\"x\"] : \"\"+datum[\"x\"], \"n\": isValid(datum[\"n\"]) ? isArray(datum[\"n\"]) ? join(datum[\"n\"], '\\n') : datum[\"n\"] : \"\"+datum[\"n\"]}"
+       },
+       "ariaRoleDescription": {
+        "value": "point"
+       },
+       "description": {
+        "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; n: \" + (format(datum[\"n\"], \"\"))"
+       },
+       "x": {
+        "scale": "x",
+        "field": "x"
+       },
+       "y": {
+        "scale": "y",
+        "field": "n"
+       }
+      }
+     }
+    }
+   ],
+   "scales": [
+    {
+     "name": "x",
+     "type": "linear",
+     "domain": {
+      "data": "data_0",
+      "field": "x"
+     },
+     "domainRaw": {
+      "signal": "zoom[\"x\"]"
+     },
+     "range": [
+      0,
+      {
+       "signal": "width"
+      }
+     ],
+     "nice": true,
+     "zero": true
+    },
+    {
+     "name": "y",
+     "type": "linear",
+     "domain": {
+      "data": "data_0",
+      "field": "n"
+     },
+     "domainRaw": {
+      "signal": "zoom[\"n\"]"
+     },
+     "range": [
+      {
+       "signal": "height"
+      },
+      0
+     ],
+     "nice": true,
+     "zero": true
+    }
+   ],
+   "axes": [
+    {
+     "scale": "x",
+     "orient": "bottom",
+     "gridScale": "y",
+     "grid": true,
+     "tickCount": {
+      "signal": "ceil(width/40)"
+     },
+     "domain": false,
+     "labels": false,
+     "aria": false,
+     "maxExtent": 0,
+     "minExtent": 0,
+     "ticks": false,
+     "zindex": 0
+    },
+    {
+     "scale": "y",
+     "orient": "left",
+     "gridScale": "x",
+     "grid": true,
+     "tickCount": {
+      "signal": "ceil(height/40)"
+     },
+     "domain": false,
+     "labels": false,
+     "aria": false,
+     "maxExtent": 0,
+     "minExtent": 0,
+     "ticks": false,
+     "zindex": 0
+    },
+    {
+     "scale": "x",
+     "orient": "bottom",
+     "grid": false,
+     "title": "x",
+     "labelFlush": true,
+     "labelOverlap": true,
+     "tickCount": {
+      "signal": "ceil(width/40)"
+     },
+     "zindex": 0
+    },
+    {
+     "scale": "y",
+     "orient": "left",
+     "grid": false,
+     "title": "n",
+     "labelOverlap": true,
+     "tickCount": {
+      "signal": "ceil(height/40)"
+     },
+     "zindex": 0
+    }
+   ],
+   "config": {
+    "range": {
+     "category": [
+      "#2a6f97",
+      "#e07a5f",
+      "#7f9c6f",
+      "#9a6700",
+      "#7b6d8d",
+      "#3d5a80",
+      "#b3402f",
+      "#5f8a8b"
+     ]
+    },
+    "axis": {
+     "labelFontSize": 11,
+     "titleFontSize": 11,
+     "titleFontWeight": 500,
+     "grid": true,
+     "labelColor": "#667085",
+     "titleColor": "#667085",
+     "domainColor": "#dcdcd4",
+     "gridColor": "#e8e8e3",
+     "tickColor": "#dcdcd4"
+    },
+    "legend": {
+     "labelFontSize": 11,
+     "titleFontSize": 11,
+     "labelColor": "#667085",
+     "titleColor": "#667085"
+    },
+    "style": {
+     "guide-label": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "guide-title": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "group-title": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "fontSize": 13,
+      "fill": "#1d2127"
+     },
+     "group-subtitle": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "cell": {
+      "stroke": null
+     },
+     "text": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     }
+    }
+   }
+  },
+  "dark": {
+   "$schema": "https://vega.github.io/schema/vega/v6.json",
+   "background": "transparent",
+   "padding": 5,
+   "width": 620,
+   "height": 280,
+   "style": "cell",
+   "data": [
+    {
+     "name": "zoom_store"
+    },
+    {
+     "name": "source_0",
+     "values": [
+      {
+       "x": 1,
+       "n": 2
+      },
+      {
+       "x": 2,
+       "n": 4
+      },
+      {
+       "x": 3,
+       "n": 6
+      },
+      {
+       "x": 4,
+       "n": 8
+      },
+      {
+       "x": 5,
+       "n": 10
+      }
+     ]
+    },
+    {
+     "name": "data_0",
+     "source": "source_0",
+     "transform": [
+      {
+       "type": "filter",
+       "expr": "datum.n >= cutoff"
+      },
+      {
+       "type": "filter",
+       "expr": "isValid(datum[\"x\"]) && isFinite(+datum[\"x\"]) && isValid(datum[\"n\"]) && isFinite(+datum[\"n\"])"
+      }
+     ]
+    }
+   ],
+   "signals": [
+    {
+     "name": "unit",
+     "value": {},
+     "on": [
+      {
+       "events": "pointermove",
+       "update": "isTuple(group()) ? group() : unit"
+      }
+     ]
+    },
+    {
+     "name": "zoom",
+     "update": "vlSelectionResolve(\"zoom_store\", \"union\")"
+    },
+    {
+     "name": "cutoff",
+     "value": 0,
+     "bind": {
+      "input": "range",
+      "min": 0,
+      "max": 10,
+      "step": 1
+     }
+    },
+    {
+     "name": "zoom_x",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "view",
+         "type": "dblclick"
+        }
+       ],
+       "update": "null"
+      },
+      {
+       "events": {
+        "signal": "zoom_translate_delta"
+       },
+       "update": "panLinear(zoom_translate_anchor.extent_x, -zoom_translate_delta.x / width)"
+      },
+      {
+       "events": {
+        "signal": "zoom_zoom_delta"
+       },
+       "update": "zoomLinear(domain(\"x\"), zoom_zoom_anchor.x, zoom_zoom_delta)"
+      }
+     ]
+    },
+    {
+     "name": "zoom_n",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "view",
+         "type": "dblclick"
+        }
+       ],
+       "update": "null"
+      },
+      {
+       "events": {
+        "signal": "zoom_translate_delta"
+       },
+       "update": "panLinear(zoom_translate_anchor.extent_y, zoom_translate_delta.y / height)"
+      },
+      {
+       "events": {
+        "signal": "zoom_zoom_delta"
+       },
+       "update": "zoomLinear(domain(\"y\"), zoom_zoom_anchor.y, zoom_zoom_delta)"
+      }
+     ]
+    },
+    {
+     "name": "zoom_tuple",
+     "on": [
+      {
+       "events": [
+        {
+         "signal": "zoom_x || zoom_n"
+        }
+       ],
+       "update": "zoom_x && zoom_n ? {unit: \"\", fields: zoom_tuple_fields, values: [zoom_x,zoom_n]} : null"
+      }
+     ]
+    },
+    {
+     "name": "zoom_tuple_fields",
+     "value": [
+      {
+       "field": "x",
+       "channel": "x",
+       "type": "R"
+      },
+      {
+       "field": "n",
+       "channel": "y",
+       "type": "R"
+      }
+     ]
+    },
+    {
+     "name": "zoom_translate_anchor",
+     "value": {},
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "pointerdown"
+        }
+       ],
+       "update": "{x: x(unit), y: y(unit), extent_x: domain(\"x\"), extent_y: domain(\"y\")}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_translate_delta",
+     "value": {},
+     "on": [
+      {
+       "events": [
+        {
+         "source": "window",
+         "type": "pointermove",
+         "consume": true,
+         "between": [
+          {
+           "source": "scope",
+           "type": "pointerdown"
+          },
+          {
+           "source": "window",
+           "type": "pointerup"
+          }
+         ]
+        }
+       ],
+       "update": "{x: zoom_translate_anchor.x - x(unit), y: zoom_translate_anchor.y - y(unit)}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_zoom_anchor",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "wheel",
+         "consume": true
+        }
+       ],
+       "update": "{x: invert(\"x\", x(unit)), y: invert(\"y\", y(unit))}"
+      }
+     ]
+    },
+    {
+     "name": "zoom_zoom_delta",
+     "on": [
+      {
+       "events": [
+        {
+         "source": "scope",
+         "type": "wheel",
+         "consume": true
+        }
+       ],
+       "force": true,
+       "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+      }
+     ]
+    },
+    {
+     "name": "zoom_modify",
+     "on": [
+      {
+       "events": {
+        "signal": "zoom_tuple"
+       },
+       "update": "modify(\"zoom_store\", zoom_tuple, true)"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "name": "marks",
+     "type": "symbol",
+     "clip": true,
+     "style": [
+      "point"
+     ],
+     "interactive": true,
+     "from": {
+      "data": "data_0"
+     },
+     "encode": {
+      "update": {
+       "opacity": {
+        "value": 0.7
+       },
+       "size": {
+        "value": 100
+       },
+       "fill": {
+        "value": "#4c78a8"
+       },
+       "tooltip": {
+        "signal": "{\"x\": isValid(datum[\"x\"]) ? isArray(datum[\"x\"]) ? join(datum[\"x\"], '\\n') : datum[\"x\"] : \"\"+datum[\"x\"], \"n\": isValid(datum[\"n\"]) ? isArray(datum[\"n\"]) ? join(datum[\"n\"], '\\n') : datum[\"n\"] : \"\"+datum[\"n\"]}"
+       },
+       "ariaRoleDescription": {
+        "value": "point"
+       },
+       "description": {
+        "signal": "\"x: \" + (format(datum[\"x\"], \"\")) + \"; n: \" + (format(datum[\"n\"], \"\"))"
+       },
+       "x": {
+        "scale": "x",
+        "field": "x"
+       },
+       "y": {
+        "scale": "y",
+        "field": "n"
+       }
+      }
+     }
+    }
+   ],
+   "scales": [
+    {
+     "name": "x",
+     "type": "linear",
+     "domain": {
+      "data": "data_0",
+      "field": "x"
+     },
+     "domainRaw": {
+      "signal": "zoom[\"x\"]"
+     },
+     "range": [
+      0,
+      {
+       "signal": "width"
+      }
+     ],
+     "nice": true,
+     "zero": true
+    },
+    {
+     "name": "y",
+     "type": "linear",
+     "domain": {
+      "data": "data_0",
+      "field": "n"
+     },
+     "domainRaw": {
+      "signal": "zoom[\"n\"]"
+     },
+     "range": [
+      {
+       "signal": "height"
+      },
+      0
+     ],
+     "nice": true,
+     "zero": true
+    }
+   ],
+   "axes": [
+    {
+     "scale": "x",
+     "orient": "bottom",
+     "gridScale": "y",
+     "grid": true,
+     "tickCount": {
+      "signal": "ceil(width/40)"
+     },
+     "domain": false,
+     "labels": false,
+     "aria": false,
+     "maxExtent": 0,
+     "minExtent": 0,
+     "ticks": false,
+     "zindex": 0
+    },
+    {
+     "scale": "y",
+     "orient": "left",
+     "gridScale": "x",
+     "grid": true,
+     "tickCount": {
+      "signal": "ceil(height/40)"
+     },
+     "domain": false,
+     "labels": false,
+     "aria": false,
+     "maxExtent": 0,
+     "minExtent": 0,
+     "ticks": false,
+     "zindex": 0
+    },
+    {
+     "scale": "x",
+     "orient": "bottom",
+     "grid": false,
+     "title": "x",
+     "labelFlush": true,
+     "labelOverlap": true,
+     "tickCount": {
+      "signal": "ceil(width/40)"
+     },
+     "zindex": 0
+    },
+    {
+     "scale": "y",
+     "orient": "left",
+     "grid": false,
+     "title": "n",
+     "labelOverlap": true,
+     "tickCount": {
+      "signal": "ceil(height/40)"
+     },
+     "zindex": 0
+    }
+   ],
+   "config": {
+    "range": {
+     "category": [
+      "#6aa9cf",
+      "#ec8b7a",
+      "#a3c46a",
+      "#e0b04a",
+      "#b3a1c9",
+      "#8fb3d9",
+      "#e17f6d",
+      "#8fc7c8"
+     ]
+    },
+    "axis": {
+     "labelFontSize": 11,
+     "titleFontSize": 11,
+     "titleFontWeight": 500,
+     "grid": true,
+     "labelColor": "#98a2b3",
+     "titleColor": "#98a2b3",
+     "domainColor": "#2f353d",
+     "gridColor": "#272c33",
+     "tickColor": "#2f353d"
+    },
+    "legend": {
+     "labelFontSize": 11,
+     "titleFontSize": 11,
+     "labelColor": "#98a2b3",
+     "titleColor": "#98a2b3"
+    },
+    "style": {
+     "guide-label": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "guide-title": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "group-title": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+      "fontSize": 13,
+      "fill": "#e4e6ea"
+     },
+     "group-subtitle": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     },
+     "cell": {
+      "stroke": null
+     },
+     "text": {
+      "font": "system-ui, -apple-system, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+     }
+    }
+   }
+  }
+ },
+ "tooltip": [
+  "x",
+  "n"
+ ],
+ "baked_at": "2026-10-27T10:10:15+00:00",
+ "sources": {
+  "media/explore.vl.json": "cfa4645ed585b298",
+  "media/bake.yaml": "f1f85eed47dae8d6"
+ }
+}

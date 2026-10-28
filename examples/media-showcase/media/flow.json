@@ -1,0 +1,35 @@
+{
+ "kind": "anim",
+ "id": "flow",
+ "sheet": "flow.webp",
+ "width": 400,
+ "height": 180,
+ "columns": 5,
+ "frames": 12,
+ "fps": 8.0,
+ "ms": 125,
+ "captions": [
+  "clean: the empty category is filled in from the label",
+  "clean: A-1001 and A-1003 both leave with a category",
+  "filter: the rows outside the taxonomy are dropped",
+  "filter: A-1003 is gone, A-1001 continues",
+  "normalize: running shoes, Running Shoes and running shoe are one label",
+  "out: one row, one canonical label"
+ ],
+ "baked_at": "2026-10-27T09:07:45+00:00",
+ "sources": {
+  "media/src/flow/frames/000.png": "1eaf2f10542856e3",
+  "media/src/flow/frames/001.png": "8a03dca20b227e10",
+  "media/src/flow/frames/002.png": "0f5aee595d57aa06",
+  "media/src/flow/frames/003.png": "684409dcbe473000",
+  "media/src/flow/frames/004.png": "673c7e2ed9a8382d",
+  "media/src/flow/frames/005.png": "ca6947cf63260a99",
+  "media/src/flow/frames/006.png": "b29b52e47c36c84d",
+  "media/src/flow/frames/007.png": "3b5420473ad6e91b",
+  "media/src/flow/frames/008.png": "37d524b69617b760",
+  "media/src/flow/frames/009.png": "9faf3f148998f070",
+  "media/src/flow/frames/010.png": "5722b4549daf679b",
+  "media/src/flow/frames/011.png": "5f705aec61167a21",
+  "media/bake.yaml": "7b9c4e90efea1e91"
+ }
+}

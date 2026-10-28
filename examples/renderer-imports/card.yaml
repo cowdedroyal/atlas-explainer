@@ -1,0 +1,10 @@
+kit: 1
+id: renderer-imports
+title: Motion Canvas and Manim imports
+summary: Real exports from two animation authoring tools, baked into one offline card.
+questions:
+  - Do Motion Canvas frames and Manim videos preserve their animation?
+anchors:
+  - demo.py
+language: en
+tags: [animation, media]
