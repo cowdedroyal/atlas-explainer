@@ -1,0 +1,9 @@
+anim:
+  motion:
+    frames: media/src/motion/frames/*.png
+    fps: 12
+    width: 320
+  manim:
+    video: media/src/manim/Flow.mp4
+    fps: 10
+    width: 320

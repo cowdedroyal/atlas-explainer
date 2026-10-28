@@ -20,6 +20,7 @@ media = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "imageio", extra = ["ffmpeg"] },
     { name = "pillow" },
     { name = "pytest" },
     { name = "vl-convert-python" },
@@ -37,6 +38,7 @@ provides-extras = ["media"]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "imageio", extras = ["ffmpeg"], specifier = ">=2.34" },
     { name = "pillow", specifier = ">=10" },
     { name = "pytest", specifier = ">=8" },
     { name = "vl-convert-python", specifier = ">=1.7" },

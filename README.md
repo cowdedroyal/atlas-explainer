@@ -112,6 +112,15 @@ Sizes: a 12-frame sheet at 560 px is 20–120 KB, a static chart 25–60 KB, an 
 budget stays 200 KB; baked media has its own 2 MB budget. Recipes for Motion Canvas, Manim and Vega-Lite are in
 [skill/explain/references/media.md](skill/explain/references/media.md).
 
+[`examples/renderer-imports`](examples/renderer-imports) contains real Motion Canvas PNG exports and a Manim MP4,
+with their scene source. Video sampling preserves source duration; the sheet grid bounds both dimensions and
+decoded memory. Media validation rejects missing images, escaping paths, active SVG and external resource URLs.
+Static SVG is displayed as an inert image, and standalone interactive pages retain the runtime's BSD notices.
+
+For the browser regression check, pack the examples and run
+`node scripts/check_media_browser.cjs <packed-dir>` with Playwright installed. `PLAYWRIGHT_MODULE` can point at an
+existing Playwright module and `CHROMIUM_EXECUTABLE_PATH` at an existing Chromium executable.
+
 ## Host protocol
 
 The viewer runs the packed page in `<iframe sandbox="allow-scripts">` (no `allow-same-origin`); the page's own CSP forbids

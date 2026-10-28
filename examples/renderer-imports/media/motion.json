@@ -1,0 +1,29 @@
+{
+ "kind": "anim",
+ "id": "motion",
+ "sheet": "motion.webp",
+ "width": 320,
+ "height": 180,
+ "columns": 6,
+ "frames": 13,
+ "fps": 12.0,
+ "ms": 83.33333333333333,
+ "captions": [],
+ "baked_at": "2026-10-27T10:05:34+00:00",
+ "sources": {
+  "media/src/motion/frames/0000.png": "dc500cf987cebe1b",
+  "media/src/motion/frames/0001.png": "cc6a5149dac1d6f7",
+  "media/src/motion/frames/0002.png": "611a821855adb1e9",
+  "media/src/motion/frames/0003.png": "bd863b729391078d",
+  "media/src/motion/frames/0004.png": "cc765b52414ab3ba",
+  "media/src/motion/frames/0005.png": "96ea7a7cdef515b7",
+  "media/src/motion/frames/0006.png": "3028b2c6ab158e24",
+  "media/src/motion/frames/0007.png": "ade5c868dc075726",
+  "media/src/motion/frames/0008.png": "7c0a03e01e7a851c",
+  "media/src/motion/frames/0009.png": "36d214b0e387751e",
+  "media/src/motion/frames/0010.png": "f4d768c2e7f4fb66",
+  "media/src/motion/frames/0011.png": "85a8b8086ca53d27",
+  "media/src/motion/frames/0012.png": "9b6532305602b0f8",
+  "media/bake.yaml": "d7f7c5e985aa63eb"
+ }
+}

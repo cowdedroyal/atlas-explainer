@@ -60,8 +60,8 @@ Set the project background to *empty* (transparent) in **Video Settings**, resol
 ```yaml
 anim:
   flow:
-    frames: "src/flow/output/*.png"
-    fps: 8
+    frames: "media/src/flow/output/*.png"
+    fps: 12
     width: 560
     captions:
       - "clean: the empty category is filled from the label"
@@ -97,8 +97,10 @@ anim:
     width: 560
 ```
 
-Use `-ql` (480p15) and keep clips under ~10 seconds: 240 frames is the ceiling, and longer clips are subsampled,
-which loses the timing you wanted. If your version writes PNG frames, use `frames:` instead.
+Use `-ql` (480p15) and keep clips short: 240 frames is the ceiling. Video `fps` is a target sampling rate, not a
+playback speed: the baker reads the source timing and preserves the clip duration, including when subsampling.
+If your version writes PNG frames, use `frames:` instead; for stills, set `fps` to the original export rate.
+The baker may reduce frame dimensions to keep both sides of the WebP grid and decoded memory within limits.
 
 ### Any other tool
 
@@ -121,7 +123,8 @@ Write a normal [Vega-Lite](https://vega.github.io/vega-lite/) spec in `media/<na
 }
 ```
 
-* `data.url` is **inlined at bake time** from a file next to the spec (CSV or JSON). Remote URLs are rejected — a card
+* `data.url` is **inlined at bake time** from a file next to the spec (CSV or JSON). Source JSON files are separate
+  from the referenced baked manifests. Remote URLs are rejected — a card
   never fetches anything, and a chart of data you did not read is the same failure as a fabricated table.
 * If the spec sets no `width`/`height`, the chart is baked at 620×280 and scaled to the card's column.
 * The theme comes from the kit's palette; your spec's own `config` overrides it.
@@ -164,6 +167,8 @@ atlas-explainer lint path/to/card           # also checks that baked media is cu
 `lint` fails, rather than warning, when:
 
 * an element names an asset that was never baked (`run atlas-explainer bake`);
+* an animation sheet is missing, references a path outside `media/`, or is not a supported raster image;
+* baked SVG contains scripts, event handlers, active elements, styles or external resource references;
 * a source file changed after the bake (`stale — … changed after the last bake`);
 * an `ex-anim` points at a chart or the other way round;
 * the inlined media exceeds 2 MB (fewer frames, a narrower sheet, or a static chart);
@@ -179,3 +184,6 @@ atlas-explainer lint path/to/card           # also checks that baked media is cu
 
 A card that shows both an animation and an interactive chart is around 700 KB packed. That is the price of an
 explanation that cannot be abbreviated; a card with prose and a table stays under 30 KB.
+
+Static SVG is displayed as an inert image, not inserted into the document as markup. Interactive cards carry the
+Vega and vega-interpreter BSD license notices inside their single-file HTML output.

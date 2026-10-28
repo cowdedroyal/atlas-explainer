@@ -134,7 +134,7 @@ def test_bake_from_a_video(tmp_path):
     src = d / "media" / "src" / "clip"
     src.mkdir(parents=True)
     stills = [PIL.new("RGB", (64, 32), (i * 20, 80, 120)) for i in range(4)]
-    iio.imwrite(src / "clip.gif", stills)
+    iio.imwrite(src / "clip.gif", stills, duration=200)
     (d / "media" / "bake.yaml").write_text(
         "anim:\n  clip:\n    video: media/src/clip/*.gif\n    fps: 5\n    width: 64\n", "utf-8")
     bake_card(d)
@@ -319,3 +319,79 @@ def test_load_media_ignores_specs(tmp_path):
     bake_card(d)
     media, errors = load_media(d)
     assert errors == [] and list(media) == ["sales"]
+
+
+def test_full_length_sheet_fits_webp_limits(tmp_path):
+    from atlas_explainer.media import _sheet, SHEET_MAX_WIDTH, SHEET_MAX_HEIGHT, SHEET_MAX_PIXELS
+    import io
+    d = card(tmp_path)
+    f = frames(d, n=1) / "000.png"
+    w, h, columns, data = _sheet([f] * 240, 560)
+    with PIL.open(io.BytesIO(data)) as image:
+        assert image.width == w * columns <= SHEET_MAX_WIDTH
+        assert image.height <= SHEET_MAX_HEIGHT
+        assert image.width * image.height <= SHEET_MAX_PIXELS
+
+
+@pytest.mark.parametrize("target", [None, 10])
+def test_video_sampling_preserves_duration(tmp_path, target):
+    iio = pytest.importorskip("imageio.v3")
+    np = pytest.importorskip("numpy")
+    d = card(tmp_path)
+    video = d / "media/clip.mp4"
+    iio.imwrite(video, [np.full((32, 64, 3), i * 7, dtype=np.uint8) for i in range(30)], fps=30)
+    cfg = "anim:\n  flow:\n    video: media/clip.mp4\n    width: 64\n"
+    if target:
+        cfg += f"    fps: {target}\n"
+    (d / "media/bake.yaml").write_text(cfg, "utf-8")
+    bake_card(d)
+    m = json.loads((d / "media/flow.json").read_text("utf-8"))
+    assert m["frames"] == (target or 12)
+    assert sum(m["durations"]) == pytest.approx(1000)
+    assert m["frames"] * m["ms"] == pytest.approx(1000)
+
+
+def test_video_frame_limit_preserves_duration(tmp_path):
+    from atlas_explainer.media import _sample_video
+    paths = [Path(str(i)) for i in range(300)]
+    picked, durations = _sample_video(paths, [1000 / 30] * 300, 30)
+    assert len(picked) == 240
+    assert sum(durations) == pytest.approx(10000)
+
+
+def test_json_data_bakes_lints_and_packs(tmp_path):
+    d = card(tmp_path, CHART)
+    p = spec(d)
+    s = json.loads(p.read_text("utf-8"))
+    s["data"]["url"] = "data.json"
+    p.write_text(json.dumps(s), "utf-8")
+    (d / "media/data.json").write_text('[{"k":"a","n":3}]', "utf-8")
+    bake_card(d)
+    assert lint_card(d) == []
+    pack_card(d, tmp_path / "out")
+
+
+def test_packed_interactive_chart_carries_bsd_notices(tmp_path):
+    d = card(tmp_path, CHART)
+    spec(d)
+    (d / "media/bake.yaml").write_text("chart:\n  sales:\n    interactive: true\n", "utf-8")
+    bake_card(d)
+    pack_card(d, tmp_path / "out")
+    html = (tmp_path / "out/index.html").read_text("utf-8")
+    assert "University of Washington Interactive Data Lab" in html
+    assert "Redistributions in binary form must reproduce" in html
+
+
+def test_real_renderer_exports_bake_lint_and_pack(tmp_path):
+    import shutil
+    example = Path(__file__).parent.parent / "examples/renderer-imports"
+    d = tmp_path / example.name
+    shutil.copytree(example, d)
+    result = bake_card(d)
+    assert result["media"]["motion"]["frames"] == 13
+    assert result["media"]["manim"]["frames"] == 10
+    m = json.loads((d / "media/manim.json").read_text("utf-8"))
+    assert sum(m["durations"]) == pytest.approx(1000)
+    assert lint_card(d) == []
+    pack_card(d, tmp_path / "out")
+    assert "data:image/webp;base64," in (tmp_path / "out/index.html").read_text("utf-8")

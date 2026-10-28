@@ -37,4 +37,5 @@ dev = [
     "pytest>=8",
     "pillow>=10",
     "vl-convert-python>=1.7",
+    "imageio[ffmpeg]>=2.34",
 ]
