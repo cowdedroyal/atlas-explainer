@@ -141,6 +141,10 @@ The script speaks each scene step's title + detail with [edge-tts](https://githu
 clips to 16 kbps Opus (so six steps stay around 150 KB), and writes one `data:audio/ogg` URI per frame. Playback is
 then fully offline; `media-src data:` is the only CSP addition. Re-run the script after editing a step's text.
 
+On Edge, the browser also exposes the online natural voices (晓晓、云希、云健、晓伊、云扬、云夏) through
+`speechSynthesis`, so the screening bar shows a voice picker and uses them directly — no baking needed. Chrome only
+exposes the local SAPI voices; there a card with baked narration keeps using it and the picker is hidden.
+
 [`examples/renderer-imports`](examples/renderer-imports) contains real Motion Canvas PNG exports and a Manim MP4,
 with their scene source. Video sampling preserves source duration; the sheet grid bounds both dimensions and
 decoded memory. Media validation rejects missing images, escaping paths, active SVG and external resource URLs.
