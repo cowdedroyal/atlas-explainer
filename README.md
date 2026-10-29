@@ -124,7 +124,22 @@ interactive charts run Vega through `vega-interpreter` rather than `new Function
 
 Sizes: a scene is 3–6 KB, a 12-frame sheet 20–120 KB, a static chart 25–60 KB, an interactive chart about 550 KB. The
 page budget stays 200 KB; baked media has its own 2 MB budget. The scene schema and recipes for charts, Motion Canvas
-and Manim are in [skill/explain/references/media.md](skill/explain/references/media.md).
+and Manim are in [skill/explain/references/builder.md](skill/explain/references/builder.md).
+
+## Neural narration
+
+A card with a stepper or a scene gets a **放映** button: it plays every frame, reads the caption, and advances when
+the clip ends. Without extra files it uses the reader's device voice. To use a natural voice instead, bake one clip per
+frame into `media/narration.json`:
+
+```bash
+uvx edge-tts --list-voices
+uv run python scripts/narrate_scene.py path/to/card --voice zh-CN-XiaoxiaoNeural --rate +8%
+```
+
+The script speaks each scene step's title + detail with [edge-tts](https://github.com/rany2/edge-tts), re-encodes the
+clips to 16 kbps Opus (so six steps stay around 150 KB), and writes one `data:audio/ogg` URI per frame. Playback is
+then fully offline; `media-src data:` is the only CSP addition. Re-run the script after editing a step's text.
 
 [`examples/renderer-imports`](examples/renderer-imports) contains real Motion Canvas PNG exports and a Manim MP4,
 with their scene source. Video sampling preserves source duration; the sheet grid bounds both dimensions and

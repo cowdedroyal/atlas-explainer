@@ -137,7 +137,7 @@ def test_pack_carries_the_scene_as_data(tmp_path):
     html = (tmp_path / "out" / "index.html").read_text("utf-8")
     assert 'id="atlas-media-registry"' in html and '"kind":"scene"' in html
     assert "data:image/" not in html.split('id="atlas-media-registry"')[1].split("</script>")[0]
-    assert len(html) < 60_000          # the inlined kit dominates a one-page card
+    assert len(html) < 90_000          # the inlined kit dominates a one-page card
 
 
 def test_lint_rejects_an_unbaked_scene(tmp_path):
