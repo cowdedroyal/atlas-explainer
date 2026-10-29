@@ -19,7 +19,7 @@ This repository holds the pieces that authors and agents need, independent of th
 | `src/atlas_explainer/pack.py`, `cli.py` | `lint` (is the card safe and well-formed), `bake` (frames and charts), `pack` (inline the kit and media, add a CSP) |
 | `src/atlas_explainer/media.py` | turning authored animation sources and Vega-Lite specs into what a card can carry |
 | `src/atlas_explainer/media/vendor/` | the Vega runtime that interactive charts are inlined with (BSD-3, see its README) |
-| `skill/explain/` | the agent skill: when a card is worth making, how to get real samples, how to write one, which commands to run |
+| `skill/explain/` | the flow skill: locate the tour step the reader is stuck on, keep the tour accurate at function level, and hang a small step-through card on each step (no autoplay); lead + subagents build steps in parallel |
 | `preview/host.html` | a stand-in for Code Atlas's reading layer: sandboxed iframe, theme/language/size messages |
 | `examples/` | cards that pass lint and demonstrate every component |
 
@@ -36,8 +36,16 @@ cp -r skill/explain ~/.claude/skills/explain          # Claude Code
 cp -r skill/explain <repo>/.agents/skills/explain     # per-repository, for other agents
 ```
 
-Then ask the agent a question about the code and say "make an explainer card for it" (or "沉淀成讲解卡"). It needs
-`codeatlas` with the `card` commands (this repository's sibling `code-atlas`, version with explainer support).
+Then point the agent at a flow: say "把这条流程讲清楚" / "这一步没懂" (or "沉淀成一条流程"). It needs
+`codeatlas` with the `tour` and `card` commands (this repository's sibling `code-atlas`).
+
+If the explanation is one giant page — or the tour stops at file level — say "把这条流程做成讲解" / "make this flow
+explainable". The `explain` skill works one level up: a Code Atlas **tour** (an ordered walk through the code, each
+step a function) is the unit, and each step gets its own small step-through card, so the reader opens one step at a
+time instead of one giant page. Tours are validated for connectivity and for the card hanging on the right step; cards
+are validated per frame (overlaps, caption length, label budget, no autoplay, ≤80 KB). Readability is bought with more
+frames, never by shortening sentences or moving prose into the figure. A lead agent can fan the steps out to several
+subagents, and two newcomers must retell the flow step by step before it is accepted.
 
 ## Try it
 
@@ -67,7 +75,8 @@ The page links the kit through two fixed placeholders and contains no other scri
 | `<ex-table source="real" origin="…" at="…"><table>…</table></ex-table>` | a data sample. `source` is **required**: `real` (also needs `origin`: the file, command or log it was read from) or `illustrative` (shown with a warning badge) |
 | `<ex-flow><ex-stage title tag><ex-in>…</ex-in><ex-out>…</ex-out><ex-why>…</ex-why></ex-stage>…</ex-flow>` | the same data travelling through stages: input, output and the reason, collapsible, numbered |
 | `<ex-compare><ex-before>…</ex-before><ex-after>…</ex-after></ex-compare>` | before/after text; the words that changed are highlighted on both sides |
-| `<ex-anim src="atlas-media:name" source="…" caption="…" autoplay loop>` | a baked animation: play/pause, scrubbing, per-frame captions, no autoplay under `prefers-reduced-motion` |
+| `<ex-scene src="atlas-media:name" source="…" caption="…">` | a diagram the reader clicks through: labelled boxes, arrows and per-step payloads that change; each click is one sentence of explanation |
+| `<ex-anim src="atlas-media:name" source="…" caption="…" autoplay loop>` | a baked frame animation — only for continuous motion |
 | `<ex-chart src="atlas-media:name" source="…" caption="…" interactive>` | a baked Vega-Lite chart; `interactive` keeps tooltips, selections and legend toggles |
 | `<a href="atlas://path/to/file.py#symbol">` | asks the host to open that node on the map |
 
@@ -76,29 +85,34 @@ Lint rejects: other scripts or event handlers, network APIs, `iframe`/`object`/`
 (`http(s):`, protocol-relative, `file:`, `javascript:`), CSS `@import`/external `url()`, tables without a declared source,
 `atlas-media:` names that were never baked or that changed since the bake, and packed cards over 200 KB.
 
-## Animations and charts
+## Scenes, charts and animations
 
-Text and tables cannot show *in what order* something happens, or *how much* against what. Those two get baked media,
-because the tools that draw them ([Motion Canvas](https://github.com/motion-canvas/motion-canvas), MIT;
-[Manim](https://github.com/ManimCommunity/manim), MIT; [Vega-Lite](https://github.com/vega/vega-lite), BSD) are far too
-heavy to run in a reader that has no network and no scripts of its own:
+Text and tables cannot show *what changes between two states*, *how much against what*, or *continuous motion*. Those
+get baked media, because the tools behind them are either too heavy for a reader with no network and no scripts of its
+own, or would bake the explanation into pixels:
+
+| Form | Written as | What the reader gets |
+|---|---|---|
+| `<ex-scene>` **(default)** | `media/scenes/<name>.yaml` | boxes, chips, arrows and values drawn as live SVG; each click reveals a step, changes a payload and prints one sentence |
+| `<ex-chart>` | `media/<name>.vl.json` (Vega-Lite, BSD) | an inline SVG chart per theme, or a real interactive Vega view |
+| `<ex-anim>` | stills from [Motion Canvas](https://github.com/motion-canvas/motion-canvas) (MIT) or Manim (MIT), or a video | a frame player — for motion that has no discrete steps |
+
+A scene is the form to reach for: it is a few kilobytes, its text is searchable, themed and translated, and the reader
+stops where they want. A video is the last resort: it cannot be stopped at a step, and it costs hundreds of kilobytes.
 
 ```
 card/
-  card.yaml            unchanged
-  index.html           <ex-anim src="atlas-media:flow">, <ex-chart src="atlas-media:throughput">
+  card.yaml
+  index.html           <ex-scene src="atlas-media:clean-pipeline">, <ex-chart src="atlas-media:throughput">
   media/
-    bake.yaml          how to render: command, frames glob, fps, captions, interactive
-    src/flow/…         the Motion Canvas project, Manim scene, or exported stills
-    flow.webp          baked sprite sheet (commit)
-    flow.json          baked manifest: frame grid, timing, captions, source hashes (commit)
-    throughput.vl.json authored Vega-Lite spec
-    throughput.csv     the data it reads; inlined at bake time
-    throughput.json    baked manifest: SVG per theme, compiled Vega spec, source hashes (commit)
+    scenes/clean-pipeline.yaml   authored: nodes, edges, steps            ← the explanation itself
+    clean-pipeline.json          baked manifest (commit)
+    throughput.vl.json           authored Vega-Lite spec; CSVs sit next to it
+    throughput.json              baked: SVG per theme, compiled Vega spec (commit)
 ```
 
 ```bash
-uv run atlas-explainer bake path/to/card            # run the declared render, decode video, compile charts
+uv run atlas-explainer bake path/to/card            # write scenes, compile charts, render frames
 uv run atlas-explainer bake path/to/card --only flow
 uv run atlas-explainer lint path/to/card            # also: is the baked media current?
 ```
@@ -108,9 +122,9 @@ interactive charts run Vega through `vega-interpreter` rather than `new Function
 `script-src 'unsafe-inline'` without `'unsafe-eval'`. The runtime is vendored once in
 `src/atlas_explainer/media/vendor/` and inlined only into cards that ask for it.
 
-Sizes: a 12-frame sheet at 560 px is 20–120 KB, a static chart 25–60 KB, an interactive chart about 550 KB. The page
-budget stays 200 KB; baked media has its own 2 MB budget. Recipes for Motion Canvas, Manim and Vega-Lite are in
-[skill/explain/references/media.md](skill/explain/references/media.md).
+Sizes: a scene is 3–6 KB, a 12-frame sheet 20–120 KB, a static chart 25–60 KB, an interactive chart about 550 KB. The
+page budget stays 200 KB; baked media has its own 2 MB budget. The scene schema and recipes for charts, Motion Canvas
+and Manim are in [skill/explain/references/media.md](skill/explain/references/media.md).
 
 [`examples/renderer-imports`](examples/renderer-imports) contains real Motion Canvas PNG exports and a Manim MP4,
 with their scene source. Video sampling preserves source duration; the sheet grid bounds both dimensions and

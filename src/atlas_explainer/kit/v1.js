@@ -15,9 +15,11 @@
 
   var I18N = {
     zh: { real: "真实数据", illustrative: "示意数据", undeclared: "未声明数据来源", from: "来自", at: "读取于",
-          play: "播放", pause: "暂停", frame: "帧", missing: "这张图没有随卡片打包（重新运行 atlas-explainer pack）" },
+          play: "播放", pause: "暂停", frame: "帧", next: "下一步", prev: "上一步", sceneHint: "点一下，看下一步",
+          missing: "这张图没有随卡片打包（重新运行 atlas-explainer pack）" },
     en: { real: "Real data", illustrative: "Illustrative data", undeclared: "Source not declared", from: "from", at: "read",
-          play: "Play", pause: "Pause", frame: "Frame", missing: "This picture was not packed into the card (re-run atlas-explainer pack)" }
+          play: "Play", pause: "Pause", frame: "Frame", next: "Next step", prev: "Previous step", sceneHint: "Click to continue",
+          missing: "This picture was not packed into the card (re-run atlas-explainer pack)" }
   };
   function t(key) {
     var lang = (root.getAttribute("lang") || "en").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
@@ -293,6 +295,265 @@
     if (node.hasAttribute("autoplay") && !prefersReduced()) start();
   }
 
+  /* ---- <ex-scene> : a click-through diagram, drawn here -------------------
+   * Everything in a scene is live SVG built from numbers: the reader clicks a step, the diagram changes, and the line
+   * under it says what changed. No pixels of text, so it follows the theme, the language and the text size. */
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var sceneSeq = 0;
+
+  function svgEl(name, attrs) {
+    var n = document.createElementNS(SVGNS, name);
+    if (attrs) Object.keys(attrs).forEach(function (k) { if (attrs[k] != null) n.setAttribute(k, String(attrs[k])); });
+    return n;
+  }
+
+  function renderScene(node) {
+    if (node.__ex) return;
+    node.__ex = true;
+    var m = mediaFor(node);
+    if (!m || m.kind !== "scene" || !m.scene) { mediaMissing(node); renderBadge(node); return; }
+    var scene = m.scene, W = scene.size[0], H = scene.size[1];
+    var uid = "ex-arrow-" + (++sceneSeq);
+
+    var fig = el("figure", "ex-scene");
+    fig.tabIndex = 0;
+    fig.setAttribute("role", "group");
+    fig.setAttribute("aria-label", node.getAttribute("caption") || "");
+    var stage = el("div", "ex-scene-stage");
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "group", "aria-label": node.getAttribute("caption") || "" });
+    var defs = svgEl("defs");
+    var marker = svgEl("marker", { id: uid, viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6, markerHeight: 6,
+                                  orient: "auto-start-reverse" });
+    marker.appendChild(svgEl("path", { d: "M 0 0 L 10 5 L 0 10 z", class: "ex-arrow-head" }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+    var gEdges = svgEl("g", { class: "ex-edges" });
+    var gNodes = svgEl("g", { class: "ex-nodes" });
+    svg.appendChild(gEdges);
+    svg.appendChild(gNodes);
+    stage.appendChild(svg);
+    fig.appendChild(stage);
+
+    var refs = {};
+    scene.nodes.forEach(function (n) {
+      var g = svgEl("g", { class: "ex-node k-" + n.kind + " t-" + n.tone + (n.dashed ? " is-dashed" : "") });
+      var shape = null, fill = null, sub = null;
+      var label = svgEl("text", { class: "ex-label", "dominant-baseline": "middle" });
+      if (n.kind === "label") {
+        label.setAttribute("text-anchor", "middle");
+        g.appendChild(label);
+      } else if (n.kind === "dot") {
+        shape = svgEl("circle", { class: "ex-shape" });
+        label.setAttribute("text-anchor", "middle");
+        g.appendChild(shape);
+        g.appendChild(label);
+      } else if (n.kind === "bar") {
+        shape = svgEl("rect", { rx: 3, class: "ex-track" });
+        fill = svgEl("rect", { rx: 3, class: "ex-fill" });
+        label.setAttribute("class", "ex-label ex-on-fill");
+        g.appendChild(shape);
+        g.appendChild(fill);
+        g.appendChild(label);
+      } else {
+        shape = svgEl("rect", { rx: n.kind === "chip" ? 9 : 6, class: "ex-shape" });
+        label.setAttribute("text-anchor", "middle");
+        g.appendChild(shape);
+        g.appendChild(label);
+      }
+      label.textContent = n.text || "";
+      if (n.sub) {
+        sub = svgEl("text", { class: "ex-sub", "text-anchor": "middle", "dominant-baseline": "middle" });
+        sub.textContent = n.sub;
+        g.appendChild(sub);
+      }
+      gNodes.appendChild(g);
+      refs[n.id] = { node: n, g: g, shape: shape, fill: fill, label: label, sub: sub };
+      layout(refs[n.id], n.size[0], n.size[1]);
+    });
+
+    /* Place a node for a given size. The group's transform carries `at`, so everything here is in its own frame. */
+    function layout(r, w, h) {
+      var at = r.node.at, cy = at[1] + h / 2;
+      if (r.shape && r.node.kind === "dot") {
+        r.shape.setAttribute("cx", at[0] + w / 2);
+        r.shape.setAttribute("cy", cy);
+        r.shape.setAttribute("r", Math.max(3, w / 2));
+      } else if (r.shape) {
+        r.shape.setAttribute("x", at[0]);
+        r.shape.setAttribute("y", at[1]);
+        r.shape.setAttribute("width", Math.max(2, w));
+        r.shape.setAttribute("height", Math.max(2, h));
+      }
+      if (r.fill) {
+        r.fill.setAttribute("x", at[0]);
+        r.fill.setAttribute("y", at[1]);
+        r.fill.setAttribute("height", Math.max(2, h));
+      }
+      if (r.node.kind === "label") {
+        r.label.setAttribute("x", at[0]);
+        r.label.setAttribute("y", cy);
+      } else if (r.node.kind === "bar") {
+        r.label.setAttribute("x", at[0] + 6);
+        r.label.setAttribute("y", cy + 1);
+      } else {
+        r.label.setAttribute("x", at[0] + w / 2);
+        r.label.setAttribute("y", r.sub ? cy - 5 : cy);
+      }
+      if (r.sub) {
+        r.sub.setAttribute("x", at[0] + w / 2);
+        r.sub.setAttribute("y", cy + 9);
+      }
+      r.w = w;
+      r.h = h;
+    }
+
+    /* An edge end is either a node id or a point, so a bracket or a leader line can sit anywhere. */
+    function endBox(ref, st) {
+      if (ref && typeof ref === "object") return { at: [Number(ref[0]), Number(ref[1])], size: [0, 0] };
+      return { at: st.at[ref], size: [st.size[ref][0], st.size[ref][1]] };
+    }
+
+    function borderPoint(box, toward) {
+      var x = box.at[0], y = box.at[1], w = box.size[0], h = box.size[1], cy = y + h / 2;
+      if (!w && !h) return [x, y];
+      if (toward[0] >= x + w) return [x + w, cy];
+      if (toward[0] <= x) return [x, cy];
+      return [x + w / 2, toward[1] >= cy ? y + h : y];
+    }
+
+    var edges = scene.edges.map(function (e) {
+      var path = svgEl("path", { class: "ex-edge" + (e.dashed ? " ex-dashed" : ""), "marker-end": "url(#" + uid + ")" });
+      gEdges.appendChild(path);
+      var label = null;
+      if (e.label) {
+        label = svgEl("text", { class: "ex-edge-label", "text-anchor": "middle", "dominant-baseline": "middle" });
+        label.textContent = e.label;
+        gEdges.appendChild(label);
+      }
+      return { edge: e, path: path, label: label };
+    });
+
+    // A node nobody shows or hides is scaffolding: visible from the first step.
+    var mentioned = {};
+    scene.steps.forEach(function (s) {
+      (s.show || []).forEach(function (id) { mentioned[id] = 1; });
+      (s.hide || []).forEach(function (id) { mentioned[id] = 1; });
+    });
+    function stateAt(k) {
+      var st = { visible: {}, at: {}, size: {}, text: {}, sub: {}, value: {}, tone: {}, focus: null };
+      scene.nodes.forEach(function (n) {
+        st.visible[n.id] = !mentioned[n.id];
+        st.at[n.id] = n.at.slice();
+        st.size[n.id] = n.size.slice();
+        st.text[n.id] = n.text || "";
+        st.sub[n.id] = n.sub;
+        st.value[n.id] = n.value;
+        st.tone[n.id] = n.tone;
+      });
+      for (var i = 0; i <= k; i++) {
+        var s = scene.steps[i];
+        (s.show || []).forEach(function (id) { st.visible[id] = true; });
+        (s.hide || []).forEach(function (id) { st.visible[id] = false; });
+        Object.keys(s.move || {}).forEach(function (id) { st.at[id] = s.move[id].slice(); });
+        Object.keys(s.size || {}).forEach(function (id) { st.size[id] = s.size[id].slice(); });
+        Object.keys(s.text || {}).forEach(function (id) { st.text[id] = s.text[id]; });
+        Object.keys(s.sub || {}).forEach(function (id) { st.sub[id] = s.sub[id]; });
+        Object.keys(s.value || {}).forEach(function (id) { st.value[id] = s.value[id]; });
+        Object.keys(s.tone || {}).forEach(function (id) { st.tone[id] = s.tone[id]; });
+        if (s.focus !== null && s.focus !== undefined) st.focus = s.focus.length ? s.focus : null;
+      }
+      return st;
+    }
+
+    var capTitle = el("b"), capDetail = el("span");
+    var cap = el("figcaption", "ex-scene-cap");
+    cap.setAttribute("aria-live", "polite");
+    cap.appendChild(capTitle);
+    cap.appendChild(capDetail);
+    var prev = el("button", "ex-prev", "‹");
+    prev.type = "button";
+    var next = el("button", "ex-next", t("next"));
+    next.type = "button";
+    var count = el("span", "ex-count");
+    var dots = el("div", "ex-scene-dots");
+    var dotEls = scene.steps.map(function (s, i) {
+      var d = el("button", "ex-dot");
+      d.type = "button";
+      d.setAttribute("aria-label", (i + 1) + ". " + s.title);
+      d.addEventListener("click", function (e) { e.stopPropagation(); show(i); });
+      dots.appendChild(d);
+      return d;
+    });
+    var bar = el("div", "ex-scene-bar");
+    bar.appendChild(prev);
+    bar.appendChild(dots);
+    bar.appendChild(next);
+    bar.appendChild(count);
+    fig.appendChild(cap);
+    fig.appendChild(bar);
+    node.appendChild(fig);
+    renderBadge(node);
+
+    var current = 0;
+    function show(k) {
+      current = Math.max(0, Math.min(scene.steps.length - 1, k));
+      var st = stateAt(current);
+      scene.nodes.forEach(function (n) {
+        var r = refs[n.id], at = st.at[n.id], visible = st.visible[n.id];
+        var dim = visible && st.focus && st.focus.indexOf(n.id) < 0;
+        r.g.setAttribute("class", "ex-node k-" + n.kind + " t-" + st.tone[n.id] + (n.dashed ? " is-dashed" : "") +
+                                  (visible ? "" : " is-hidden") + (dim ? " is-dim" : ""));
+        r.g.style.transform = "translate(" + (at[0] - n.at[0]) + "px," + (at[1] - n.at[1]) + "px)";
+        layout(r, st.size[n.id][0], st.size[n.id][1]);
+        if (r.label.textContent !== st.text[n.id]) r.label.textContent = st.text[n.id];
+        if (r.sub) {
+          var sub = st.sub[n.id] == null ? "" : st.sub[n.id];
+          if (r.sub.textContent !== sub) r.sub.textContent = sub;
+          r.sub.style.display = sub ? "" : "none";
+        }
+        if (r.fill) {
+          var value = st.value[n.id] == null ? 1 : st.value[n.id];
+          r.fill.setAttribute("width", Math.max(0, st.size[n.id][0] * value));
+        }
+      });
+      edges.forEach(function (e) {
+        var a = endBox(e.edge.from, st), b = endBox(e.edge.to, st);
+        var ca = [a.at[0] + a.size[0] / 2, a.at[1] + a.size[1] / 2];
+        var cb = [b.at[0] + b.size[0] / 2, b.at[1] + b.size[1] / 2];
+        var p1 = borderPoint(a, cb), p2 = borderPoint(b, ca);
+        var visible = (typeof e.edge.from === "object" || st.visible[e.edge.from]) &&
+                      (typeof e.edge.to === "object" || st.visible[e.edge.to]);
+        e.path.setAttribute("d", "M " + p1[0] + " " + p1[1] + " L " + p2[0] + " " + p2[1]);
+        e.path.setAttribute("class", "ex-edge" + (e.edge.dashed ? " ex-dashed" : "") + (visible ? "" : " is-hidden"));
+        if (e.label) {
+          e.label.setAttribute("x", (p1[0] + p2[0]) / 2);
+          e.label.setAttribute("y", (p1[1] + p2[1]) / 2 - 5);
+          e.label.setAttribute("class", "ex-edge-label" + (visible ? "" : " is-hidden"));
+        }
+      });
+      var step = scene.steps[current];
+      capTitle.textContent = step.title;
+      capDetail.textContent = step.detail || (current === 0 ? t("sceneHint") : "");
+      count.textContent = (current + 1) + " / " + scene.steps.length;
+      prev.disabled = current === 0;
+      next.disabled = current === scene.steps.length - 1;
+      dotEls.forEach(function (d, i) {
+        d.setAttribute("aria-current", i === current ? "true" : "false");
+        d.className = "ex-dot" + (i === current ? " is-on" : i < current ? " is-done" : "");
+      });
+      fig.setAttribute("data-step", String(current + 1));
+    }
+    prev.addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
+    next.addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
+    stage.addEventListener("click", function () { show(current + 1); });
+    fig.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") { e.preventDefault(); show(current + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); show(current - 1); }
+    });
+    show(0);
+  }
+
+
   /* ---- <ex-chart> : a baked Vega-Lite chart ---------------------------------- */
   function renderChart(node) {
     if (node.__ex) return;
@@ -409,6 +670,7 @@
     document.querySelectorAll("ex-stage").forEach(renderStage);
     document.querySelectorAll("ex-compare").forEach(renderCompare);
     document.querySelectorAll("ex-anim").forEach(renderAnim);
+    document.querySelectorAll("ex-scene").forEach(renderScene);
     document.querySelectorAll("ex-chart").forEach(renderChart);
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest("a[href]");

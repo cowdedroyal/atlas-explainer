@@ -11,10 +11,10 @@
   "kind",
   "rows"
  ],
- "baked_at": "2026-10-27T09:07:47+00:00",
+ "baked_at": "2026-10-28T02:18:03+00:00",
  "sources": {
   "media/survivors.csv": "116033d18ea3f413",
   "media/survivors.vl.json": "12a17b43e1f13f29",
-  "media/bake.yaml": "7b9c4e90efea1e91"
+  "media/bake.yaml": "a1f90f702c19eef7"
  }
 }
