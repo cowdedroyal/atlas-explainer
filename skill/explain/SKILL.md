@@ -64,6 +64,9 @@ reviewer 很容易越提越多，builder 会一直改。必须设停：
 
 - **qa.mjs**：机械检查——每帧只有一个图层/caption/nav、无文字互叠、光圈不切字、不压框、不出画、
   说明不超宽、无 infinite、体积、以及**这一帧的图有没有变**（只移光圈/只换字会报 frame-static / frame-empty）。
+  注意它的 sizeOk 只量 index.html（raw）；**真正的体积门是打包后**，只有 `codeatlas card validate` 会算（内联 kit 后**固定 +79,558 字节**，上限 200,000；对应 raw 必须 ≤120,000）。
+- **codeatlas card validate**：schema + 锚点 + lint + **打包后体积**。超限的卡 apply 会被拒，站点构建也会跳过它（tour 里那一步就成了“没有卡”）。
+  所以每张卡必须过 `card validate`，不能只跑 qa.mjs。
 - **reading.mjs**：只把每帧标题/说明/事实行导出成文字稿，给 reviewer 读；它不做质量判断。
 - 脚本全绿不等于讲清楚。真正的验收是：reviewer 按帧复述能懂 + 主代理看图形是不是针对这一步（不是模板）。
 
@@ -80,6 +83,8 @@ reviewer 很容易越提越多，builder 会一直改。必须设停：
 | 动作准确 | 设置/检查/复制/删除/读取不能混；页面标题与 card.yaml 一致 |
 | 不自动播放 | radio + label 的 stepper，读者点一步看一步；无 infinite 动画 |
 | 不叠 | 文字不压字、不压框、光圈不切字；qa 0 problems |
+| 体积 | 打包后 ≤200,000 字节 = raw + 79,558（`codeatlas card validate` 会算；raw ≤110,000 才稳） |
+| 暗色 | 站点切暗色后可读：正文要在 `main`/`article`/`.wrap`/`.ex`/`.card` 包裹层里（kit 的暗色反转只作用于 body 的子孙节点） |
 | 新人看懂 | 审查子代理按帧复述，说“看懂了”，没有“这里我不确定” |
 
 ## 流程验收

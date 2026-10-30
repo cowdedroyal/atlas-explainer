@@ -109,6 +109,9 @@ codeatlas show "{step_at}" --code -r {repo}
 - 目录：{out_dir}/{card_id}/
 - card.yaml：kit: 1、id、title、questions、summary、anchors（**只写 {anchors} 这一个，不要加相邻函数或相邻步骤的符号**）、tags、language: zh
 - index.html：自包含的 stepper；引用 atlas-kit:1.css / atlas-kit:1.js；无自定义脚本、无事件属性。
+- **暗色模式**：正文必须包在一个 `main`／`article`／`.wrap`／`.ex`／`.card` 元素里（例如 `<body><div class="wrap">…</div></body>`）。
+  atlas-kit 对“手写 stepper”的暗色处理是给这个包裹层加 `.ex-legacy-paper` 再整体 `invert(1) hue-rotate(180deg)`；
+  如果内容直接挂在 `<body>` 下，选择器 `.ex-legacy .ex-legacy-paper` 匹配不到，暗色就会失效（白底黑字）。
 - index.html 的 `<title>` 和页面大标题必须与 card.yaml 的 title **完全一致**；不要另起第三个标题。
 - 不要改 tour、不要 apply、不要碰别人的卡。
 
@@ -116,9 +119,16 @@ codeatlas show "{step_at}" --code -r {repo}
 
 ~~~bash
 node {skill}/scripts/qa.mjs {out_dir}/{card_id}/index.html light 900
+codeatlas card validate {out_dir}/{card_id} -r {repo}
 ~~~
 
-要求 ok=true、problemCount=0、无 infinite。再截一张图，自己看一眼：有没有文字压图、留白够不够、每帧的图是不是真的在变。然后逐帧看一遍文字稿：
+要求两条都过：qa.mjs 的 ok=true / problemCount=0 / 无 infinite；card validate 的 ok=true、errors 为空。
+
+**体积要盯打包后，不是 raw。** qa.mjs 的 sizeOk 只量 index.html 本身；card validate 会把 atlas-kit 的 css+js 内联进去再判，
+**实测固定 +79,558 字节**（不是模糊的“+50KB”），上限 200,000。所以 raw 必须 ≤ 120,000（留余量按 ≤110,000 做）；
+超了 apply 会被拒，站点构建也会跳过这张卡，tour 里那一步就显示“没有卡”。
+瘦身的常规手段：每帧重复的图元提到 <defs> + <use>、密集小图元用 <pattern> 填充（用 path 填充，别用 rect，否则 qa 的 spill 会误报）、
+内联 style 收进 <style> 的 class、path 的 d 压掉空格与小数、图上只留名字和数字。再截一张图，自己看一眼：有没有文字压图、留白够不够、每帧的图是不是真的在变。然后逐帧看一遍文字稿：
 
 ~~~bash
 node {skill}/scripts/reading.mjs {out_dir}/{card_id}/index.html

@@ -124,6 +124,19 @@ try {
         const prevSig = idx > 0 ? stripFrame(svg.querySelector('.fr' + idx)) : '';
         if (!curSig) problems.push({ k: 'frame-empty' });
         else if (idx > 0 && curSig === prevSig) problems.push({ k: 'frame-static' });
+        if (layer) {
+          const outside = [];
+          [...layer.querySelectorAll('path,rect,circle,ellipse,polygon,use')]
+            .filter((el) => !el.closest('defs') && !el.classList.contains('ring'))
+            .forEach((el) => {
+              let b; try { b = el.getBBox(); } catch (e) { return; }
+              if (!b || (b.width <= 0 && b.height <= 0)) return;
+              const dx = Math.max(-b.x, (b.x + b.width) - vb.width);
+              const dy = Math.max(-b.y, (b.y + b.height) - vb.height);
+              if (Math.max(dx, dy) > 2) outside.push(el.tagName.toLowerCase() + '@' + b.x.toFixed(1) + ',' + b.y.toFixed(1) + ' ' + b.width.toFixed(1) + 'x' + b.height.toFixed(1));
+            });
+          if (outside.length) problems.push({ k: 'shape-outside', n: outside.length, s: outside.slice(0, 3).join(' | ') });
+        }
         if (!legacy) {
           const lts = layer ? [...layer.querySelectorAll('text')].filter(t => eff(t) > 0.05 && !t.classList.contains('rail') && (t.textContent || '').trim() !== rail).map(t => (t.textContent || '').trim()).filter(Boolean) : [];
           if (lts.length > 4) problems.push({ k: 'figure-many-labels', n: lts.length, s: lts.join('|') });
